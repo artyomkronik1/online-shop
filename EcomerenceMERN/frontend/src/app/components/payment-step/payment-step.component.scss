@@ -1,0 +1,84 @@
+
+
+.fade-in-out {
+  animation: fadeInOut 0.5s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.dialog{
+
+  padding: 0;
+  border-radius: 12px;
+ // box-shadow: 0 12px 20px #41414140;
+  z-index:2100;
+ // backdrop-filter:blur(20px);
+  //height: 20px;
+
+
+}
+::ng-deep scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.mat-mdc-dialog-container{
+  position: fixed;
+}
+::ng-deep .my-custom-dialog-class {
+  .mdc-dialog {
+    border: 4px solid  #ef233c ;
+    //background-color: #0006;
+    //border: none;
+    //padding: 0;
+    //position: fixed;
+    //top: 50%;
+    //margin: -400px 0 0 -450px;
+    //left: 50%;
+    //border-radius: 12px;
+    //box-shadow: 0 12px 20px #41414140;
+    //z-index:2100;
+    //backdrop-filter:blur(20px);
+    width: 900px;
+    height:635px;
+
+
+
+    border-radius: 12px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    position: fixed;
+    z-index: 110;
+    top: 50%;
+    overflow: visible;
+    transform: translateY(-50%);
+
+
+
+  }
+  .mat-mdc-dialog-content{
+    min-height: 100%;
+    overflow: hidden;
+    background: white;
+    //backdrop-filter:blur(20px);
+    max-height: 100%;
+
+  }
+
+
+}
+.filter-btn{
+  background: #ef233c ;border-radius: 30px; border: none; align-items: center;
+  color: white;
+  width: 100%;
+}
+.filter-btn:hover{
+  background: #f87e96;;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+  background-color:#ef233c;
+  border-radius: 30px;
+}

@@ -1,0 +1,11 @@
+<ngx-spinner
+  [dir]="dir"
+  *ngIf="loading===true"
+  bdColor= "#FFFAF0"
+  size="large"
+  color="orange"
+  [type]="spinnerType"
+
+>
+  <p style="font-size: 20px; color: black; font-family: 'Arial'">{{'Loading...' | translate}}</p>
+</ngx-spinner>

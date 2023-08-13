@@ -1,0 +1,23 @@
+.add_wish_list:hover{
+  background-color:#D60B52;
+  color:#FFF
+}
+.add_wish_list{
+  gap: 10px;
+  justify-content: center;
+  align-items: baseline;
+  position: relative;
+  border: 2px solid #D60B52;
+  display: flex;
+  height: 40px;
+  padding: 5px 23px;
+  background-color: #FFF;
+  color: #D60B52;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-radius: 40px;
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
+  flex-direction: revert;
+
+}

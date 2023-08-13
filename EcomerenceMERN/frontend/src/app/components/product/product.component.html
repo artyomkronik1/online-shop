@@ -1,0 +1,141 @@
+
+<!-- BREADCRUMB -->
+
+<div class="dialog fade-in-out" [dir]="dir"  >
+  <button  mat-icon-button style="float: right; margin:5px" [mat-dialog-close]="closePopup===true">
+    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+      <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+    </svg>
+  </button>
+  <mat-dialog-content>
+<div id="breadcrumb" class="section" [dir]="dir">
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <div class="row">
+
+<!--      <div class="col-md-12">-->
+<!--        <ul class="breadcrumb-tree">-->
+<!--          <li><a href="#">{{ 'Home'  | translate}}</a></li>-->
+<!--          <li><a href="#">{{product.category | translate}}</a></li>-->
+<!--          <li class="active">{{product.name}}</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+</div>
+<!-- /BREADCRUMB -->
+
+<!-- SECTION -->
+<div class="section" [dir]="dir">
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <div class="row">
+      <!-- Product main img -->
+      <div class="col-md-5 col-md-push-2">
+        <div id="product-main-img">
+          <img [src]="product.image" alt="{{product.name}}"/>
+<!--          <ng-template [ngIf]="thumbImages.length === 0">-->
+<!--            <div class="product-preview">-->
+<!--              <img [src]="product.image" alt="{{product.name}}">-->
+<!--            </div>-->
+<!--          </ng-template>-->
+<!--          <ng-template [ngIf]="thumbImages.length > 0">-->
+<!--            <div class="product-preview" *ngFor="let t of thumbImages">-->
+<!--              <img [src]="t" alt="{{product.name}}">-->
+<!--            </div>-->
+<!--          </ng-template>-->
+        </div>
+      </div>
+      <!-- /Product main img -->
+
+      <!-- Product thumb imgs -->
+<!--      <div class="col-md-2  col-md-pull-5">-->
+<!--        <ng-template [ngIf]="thumbImages.length > 0">-->
+<!--          <div id="product-imgs">-->
+<!--            <div class="product-preview" *ngFor="let t of thumbImages">-->
+<!--              <img [src]="t" alt="{{product.name}}">-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </ng-template>-->
+<!--        <ng-template [ngIf]="thumbImages.length === 0">-->
+<!--          <div id="product-imgs">-->
+<!--            <div class="product-preview">-->
+<!--              <img [src]="product.image" alt="{{product.name}}">-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </ng-template>-->
+
+<!--      </div>-->
+      <!-- /Product thumb imgs -->
+
+      <!-- Product details -->
+      <div class="col-md-5">
+        <div class="product-details">
+          <h2 class="product-name">{{product.name}}</h2>
+          <div>
+            <div class="product-rating">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-o"></i>
+            </div>
+            <a class="review-link" href="#">10 Review(s) | Add your review</a>
+          </div>
+          <div>
+            <h3 class="product-price" style="font-family: cursive">{{product.price | currency:'USD'}}</h3>
+            <span class="product-available">{{ "In Stock" | translate}}</span>
+          </div>
+          <p>
+            {{product.description}}
+          </p>
+
+          <div class="add-to-cart">
+            <div class="qty-label">
+              {{ 'Qty'  |translate}}
+              <div class="input-number">
+                <input type="number" #quantity [max]="product?.quantity >=1 ? product?.quantity : 0"
+                       min="1"
+                       readonly
+                       value="{{product?.quantity >= 1 ? 1: 0}}"
+                >
+                <span class="qty-up" (click)="Increase()">+</span>
+                <span class="qty-down" (click)="Decrease()">-</span>
+              </div>
+            </div>
+            <button class="add-to-cart-btn" (click)="addToCart(product?.id)"><i class="fa fa-shopping-cart"></i> {{ 'ADD to cart' | translate}}</button>
+          </div>
+
+          <ul class="product-btns" style="display: flex; justify-content: end">
+            <button class=" add-to-cart-btn  add_wish_list"  (click)="AddToWishList(product)"><i class="fa fa-heart"></i>  <p >{{"ADD to wish list" | translate }}</p></button>
+          </ul>
+
+          <ul class="product-links">
+            <li>{{ "Category:"  | translate}}</li>
+            <li><a href="#">{{product.category | translate}}</a></li>
+
+          </ul>
+
+          <ul class="product-links">
+            <li>{{ 'Share:' |translate}}</li>
+            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+            <li><a href="#"><i class="fa fa-envelope"></i></a></li>
+          </ul>
+
+        </div>
+      </div>
+      <!-- /Product details -->
+
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+</div>
+    </mat-dialog-content>
+</div>

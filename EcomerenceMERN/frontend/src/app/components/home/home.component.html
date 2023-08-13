@@ -1,0 +1,970 @@
+
+<div [dir]="dir" id="home">
+
+ <app-toggle-loading *ngIf="loading===true"/>
+
+
+<!--  loggin-->
+  <div *ngIf="(logged===false  || !logged )&& signdup===true">
+    <app-login/>
+  </div>
+<!--sign up-->
+  <div *ngIf="signdup===false || !signdup">
+    <app-signup/>
+  </div>
+  <nav id="navigation" class="navigation" *ngIf="signdup===true && logged===true"  >
+
+    <!-- container -->
+    <div class="container">
+<!--      <swiper-container>-->
+<!--      <swiper-slide>Slide 1</swiper-slide>-->
+<!--      <swiper-slide>Slide 2</swiper-slide>-->
+<!--      <swiper-slide>Slide 3</swiper-slide>-->
+<!--      ...-->
+<!--    </swiper-container>-->
+      <!-- responsive-nav -->
+      <div>
+        <!-- NAV -->
+        <ul class="main-nav nav py-3" >
+          <li [class.active]="category == 'All products'"><a (click)="goToHomePage()"    >{{ 'Home' | translate}}</a></li>
+<!--          <li><a (click)="goToDealsPage()">{{ "Hot Deals" | translate}}</a></li>-->
+<!--          <li><a href="#">        <select class="input-select" style="border: none; margin-top: -10px" [(ngModel)]="category" (input)="changed = true" name="something" (change)="productsByCategory(category)"> >-->
+<!--            <option   *ngFor="let category of allCategories;  ">{{category}}</option>-->
+<!--          </select></a></li>-->
+<!--          <li><a href="#">{{ 'Contact us' | translate}}</a></li>-->
+
+            <li  [class.active]="category == cat"  (click)="checkCategory(cat)" *ngFor="let cat of allCategories"> <a (click)="productsByCategory(cat)" class="category_link"   >{{cat | translate}}</a></li>
+
+        </ul>
+
+
+        <!-- /NAV -->
+      </div>
+
+      <!-- /responsive-nav -->
+    </div>
+    <!-- /container -->
+  </nav>
+
+<!-- SECTION -->
+
+  <!-- container -->
+<!--  <div class="container"  >-->
+<!--    &lt;!&ndash; row &ndash;&gt;-->
+<!--    <div class="row">-->
+<!--      &lt;!&ndash; shop &ndash;&gt;-->
+<!--      <div class="col-md-4 col-xs-6">-->.
+<!--          <div class="shop-img">-->
+<!--            <img src="/assets/img/shop01.png" alt="">-->
+<!--          </div>-->
+<!--          <div class="shop-body">-->
+<!--            <h3>Laptop<br>Collection</h3>-->
+<!--            <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      &lt;!&ndash; /shop &ndash;&gt;-->
+
+<!--      &lt;!&ndash; shop &ndash;&gt;-->
+<!--      <div class="col-md-4 col-xs-6">-->
+<!--        <div class="shop">-->
+<!--          <div class="shop-img">-->
+<!--            <img src="/assets/img/shop03.png" alt="">-->
+<!--          </div>-->
+<!--          <div class="shop-body">-->
+<!--            <h3>Accessories<br>Collection</h3>-->
+<!--            <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      &lt;!&ndash; /shop &ndash;&gt;-->
+
+<!--      &lt;!&ndash; shop &ndash;&gt;-->
+<!--      <div class="col-md-4 col-xs-6">-->
+<!--        <div class="shop">-->
+<!--          <div class="shop-img">-->
+<!--            <img src="/assets/img/shop02.png" alt="">-->
+<!--          </div>-->
+<!--          <div class="shop-body">-->
+<!--            <h3>Cameras<br>Collection</h3>-->
+<!--            <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      &lt;!&ndash; /shop &ndash;&gt;-->
+<!--    </div>-->
+<!--    &lt;!&ndash; /row &ndash;&gt;-->
+<!--  </div>-->
+  <!-- /container -->
+
+<!-- /SECTION -->
+
+<!-- SECTION -->
+<div class="section" id="section" *ngIf="signdup==true && logged===true" >
+  <!-- container -->
+  <div class="left" id="left" style="min-width: 10%; height: 100%;; margin-top:-80px; z-index: 0; max-width: 10%; background:#efe2e754">
+    <div class="product-properties" id="product-properties" >
+      <div style="display: flex; flex-direction: column; width: 100%;    padding-right: 10px;  padding-left: 10px; ">
+        <span style="display: flex; justify-content: center; font-weight: bold; ">{{  "Properties" | translate}}</span>
+        <br/>
+        <br/>
+        <div style="display: flex; flex-direction: column; gap: 40px;">
+
+          <div style="display: flex; flex-direction: column">
+            <span style="font-weight: bold; display: flex; justify-content: start; font-size: 18px; color:#D60B52 ">{{ "Category" | translate}}</span>
+            <div style="display:flex; flex-wrap: wrap ; justify-content: start;">
+
+              <div class="form-check form-check-inline">
+
+                <input class="form-check-input form-check-inline__property" type="radio"  name="inlineRadioOptions1" id="inlineRadio1" value="Men" (change)="filterProduct('men', 'sex')" [(ngModel)]="sex" [ngModelOptions]="{standalone: true}">
+                <label class="form-check-label" for="inlineRadio1">{{'Men' | translate}}</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input form-check-inline__property" type="radio" name="inlineRadioOptions1" id="inlineRadio2" value="Women" (change)="filterProduct('women', 'sex')"  [(ngModel)]="sex" [ngModelOptions]="{standalone: true}">
+                <label class="form-check-label" for="inlineRadio2">{{'Women' | translate}}</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input form-check-inline__property" type="radio" name="inlineRadioOptions1" id="inlineRadio55" value="Both" (change)="filterProduct('both', 'sex')"  [(ngModel)]="sex" [ngModelOptions]="{standalone: true}">
+                <label class="form-check-label" for="inlineRadio55">{{'Both' | translate}}</label>
+              </div>
+
+
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column">
+            <span style="font-weight: bold; display: flex; justify-content: start; font-size: 18px; color:#D60B52 ">{{'Size' | translate}}</span>
+            <div style="display:flex; flex-wrap: wrap;justify-content: start;">
+
+              <div class="form-check form-check-inline">
+                <input class="form-check-input form-check-inline__property" type="radio" name="inlineRadioOptions2" id="inlineRadio3" value="XS" (change)="filterProduct('xs', 'size')"   [(ngModel)]="size" [ngModelOptions]="{standalone: true}">
+                <label class="form-check-label" for="inlineRadio3">XS</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input form-check-inline__property" type="radio" name="inlineRadioOptions2" id="inlineRadio4" value="S"  (change)="filterProduct('s', 'size')" [(ngModel)]="size" [ngModelOptions]="{standalone: true}">
+                <label class="form-check-label" for="inlineRadio4">S</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input form-check-inline__property" type="radio" name="inlineRadioOptions2" id="inlineRadio5" value="M" (change)="filterProduct('m', 'size')" [(ngModel)]="size" [ngModelOptions]="{standalone: true}">
+                <label class="form-check-label" for="inlineRadio5">M</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input form-check-inline__property" type="radio" name="inlineRadioOptions2" id="inlineRadio6" value="L" (change)="filterProduct('l', 'size')" [(ngModel)]="size" [ngModelOptions]="{standalone: true}">
+                <label class="form-check-label" for="inlineRadio6">L</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input form-check-inline__property" type="radio" name="inlineRadioOptions2" id="inlineRadio7" value="XL" (change)="filterProduct('xl', 'size')" [(ngModel)]="size" [ngModelOptions]="{standalone: true}">
+                <label class="form-check-label" for="inlineRadio7">XL</label>
+              </div>
+
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column">
+            <span style="font-weight: bold; display: flex; justify-content: start; font-size: 18px; color:#D60B52 ">{{'Color' | translate}}</span>
+            <div style="display:flex; flex-wrap: wrap;justify-content: start; row-gap: 5px">
+
+              <div class="form-check form-check-inline">
+                <button class="color-button btn1" (click)="filterProduct('red', 'color')">
+                </button>
+              </div>
+              <div class="form-check form-check-inline">
+                <button class="color-button btn7" (click)="filterProduct('white', 'color')">
+                </button>
+              </div>
+
+              <div class="form-check form-check-inline">
+                <button class="color-button btn2" (click)="filterProduct('green', 'color')">
+                </button>
+              </div>
+
+              <div class="form-check form-check-inline">
+                <button class="color-button btn3" (click)="filterProduct('blue', 'color')" >
+                </button>
+              </div>
+              <div class="form-check form-check-inline">
+                <button class="color-button btn4" (click)="filterProduct('yellow', 'color')" >
+                </button>
+              </div>
+              <div class="form-check form-check-inline">
+                <button class="color-button btn6" (click)="filterProduct('black', 'color')" >
+                </button>
+              </div>
+              <div class="form-check form-check-inline">
+                <button class="color-button btn5" (click)="filterProduct('pink', 'color')" >
+                </button>
+              </div>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column">
+            <span style="font-weight: bold; display: flex; justify-content: start; font-size: 18px; color:#D60B52 ">{{ "Length" | translate}}</span>
+            <div style="display:flex; flex-wrap: wrap;justify-content: start;">
+
+              <div class="form-check form-check-inline">
+                <input class="form-check-input form-check-inline__property" type="radio" name="inlineRadioOptions3" id="inlineRadio9" value="Long" (change)="filterProduct('long', 'length')" [(ngModel)]="length" [ngModelOptions]="{standalone: true}">
+                <label class="form-check-label" for="inlineRadio9">{{ "Long" | translate}}</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input form-check-inline__property" type="radio" name="inlineRadioOptions3" id="inlineRadio10" value="Normal" (change)="filterProduct('normal', 'length')" [(ngModel)]="length" [ngModelOptions]="{standalone: true}">
+                <label class="form-check-label" for="inlineRadio10">{{ "Normal" | translate}}</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input form-check-inline__property" type="radio" name="inlineRadioOptions3" id="inlineRadio11" value="Crop"  (change)="filterProduct('crop', 'length')" [(ngModel)]="length" [ngModelOptions]="{standalone: true}">
+                <label class="form-check-label" for="inlineRadio11">{{ "Crop" | translate}}</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input form-check-inline__property" type="radio" name="inlineRadioOptions3" id="inlineRadio12" value="MicroCrop"  (change)="filterProduct('microcrop', 'length')" [(ngModel)]="length" [ngModelOptions]="{standalone: true}">
+                <label class="form-check-label" for="inlineRadio12">{{ "MicroCrop" | translate}}</label>
+              </div>
+            </div>
+          </div>
+
+
+          <div style="display: flex; flex-direction: column">
+            <span style="font-weight: bold; display: flex; justify-content: start; font-size: 18px; color:#D60B52 ">{{ "Material" | translate}}</span>
+            <div style="display:flex; flex-wrap: wrap;justify-content: start;">
+
+              <div class="form-check form-check-inline">
+                <input class="form-check-input form-check-inline__property" type="radio" name="inlineRadioOptions4" id="inlineRadio13" (change)="filterProduct('aluminium', 'material')" value="Aluminium" [(ngModel)]="material" [ngModelOptions]="{standalone: true}">
+                <label class="form-check-label" for="inlineRadio13">{{ "Aluminium" | translate}}</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input form-check-inline__property" type="radio" name="inlineRadioOptions4" id="inlineRadio14"   (change)="filterProduct('canvas', 'material')"  value="Canvas" [(ngModel)]="material" [ngModelOptions]="{standalone: true}">
+                <label class="form-check-label" for="inlineRadio14">{{ "Canvas" | translate}}</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input form-check-inline__property" type="radio" name="inlineRadioOptions4" id="inlineRadio15" value="Chiffon"   (change)="filterProduct('chiffon', 'material')"  [(ngModel)]="material" [ngModelOptions]="{standalone: true}">
+                <label class="form-check-label" for="inlineRadio15">{{ "Chiffon" | translate}}</label>
+              </div>
+            </div>
+
+          </div>
+          <!--          <button class="filter-btn" (click)="filterProduct()" ><p style="color:white; margin-bottom: 5px">{{'Filter' | translate}}</p></button>-->
+        </div>
+      </div>
+
+    </div>
+  </div>
+    <div class="right" id="right">
+  <div class="container" style="display: flex">
+
+    <!-- row -->
+    <div class="row" style="min-width: 100%; padding-right: 5px">
+
+<!--    <div class="slide-container swiper" >-->
+
+<!--      <div class="slide-content" *ngFor="let p of products">-->
+<!--        <div class="card-wrapper swiper-wrapper">-->
+<!--          <div class="card-slider swiper-slide">-->
+<!--            <div class="image-content">-->
+<!--              <span class="overlay">  </span>-->
+
+
+<!--              <div class="card card-image">-->
+<!--                <img [src]="p.image" class="card-img"/>-->
+<!--              </div>-->
+<!--            </div>-->
+
+<!--            <div class="card-content">-->
+<!--              <h2 class="name">{{p.name}}</h2>-->
+<!--              <p class="description">{{p.description}}</p>-->
+
+
+<!--              <button class="button">View More</button>-->
+<!--            </div>-->
+
+
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="swiper-button-next"></div>-->
+<!--        <div class="swiper-button-prev"></div>-->
+<!--        <div class="swiper-pagination"></div>-->
+<!--      </div>-->
+<!--    </div>-->
+      <!-- section title -->
+      <div *ngIf="!mobile" style="    width: 100%;
+    background: #D60B52;
+    border-radius: 25px;
+    margin-left: 10px;
+    height: 90px;">
+
+        <div class="waviy" *ngIf="dir=='ltr' && !mobile" >
+          <div style="    display: flex;
+    justify-content: space-around;
+    width: 40%;">
+          <span style="--i:1">S</span>
+          <span style="--i:2">U</span>
+          <span style="--i:3">M</span>
+          <span style="--i:4">M</span>
+          <span style="--i:5">E</span>
+          <span style="--i:6">R</span>
+          <br/>
+            </div>
+          <div style="    display: flex;
+    justify-content: space-around;
+    width: 20%;">
+          <span style="--i:7"></span>
+          <span style="--i:8">S</span>
+          <span style="--i:9">A</span>
+          <span style="--i:10">L</span>
+          <span style="--i:11">E</span>
+
+          </div>
+          <div style="    display: flex;
+          justify-content: space-around;
+          width:10%;">
+            <span style="--i:12">7</span>
+            <span style="--i:13">0</span>
+            <span style="--i:14">%</span>
+        </div>
+        </div>
+
+        <div class="waviy" *ngIf="dir=='rtl' && !mobile">
+          <div style="    display: flex;
+    justify-content: center;
+    gap: 50px;
+    width: 40%;">
+            <span style="--i:1">מ</span>
+            <span style="--i:2">ב</span>
+            <span style="--i:3">צ</span>
+            <span style="--i:4">ע</span>
+            <span style="--i:5">י</span>
+            <br/>
+          </div>
+          <div style="    display: flex;
+    justify-content: center;
+    gap: 50px;">
+            <span style="--i:6"></span>
+            <span style="--i:7">ק</span>
+            <span style="--i:8">י</span>
+            <span style="--i:9">ץ</span>
+
+
+          </div>
+          <div style="    display: flex;
+          justify-content: space-around;
+          width:10%;">
+            <span style="--i:12">%</span>
+            <span style="--i:13">0</span>
+            <span style="--i:14">7</span>
+          </div>
+        </div>
+
+<!--        <p class="sale" style="display: flex; justify-content: center; width: 100%; align-items: center; margin-top: 8px;  font-size: 23px; font-weight: bold">BIG SUMMER SALE </p>-->
+      </div>
+
+
+
+      <div class="col-md-12" style="margin-left: 0px;">
+        <div class="header-search"  >
+          <form style="width: 100%;">
+            <input class="input" name="searchProduct"  id="searchProduct"  placeholder= "{{'Search here' | translate}}"  (keyup)="productsByName($event)" style="width: 90%;;" >
+            <button class="search-btn">{{ "Search..." | translate}}</button>
+          </form>
+        </div>
+        <div class="section-title" style="display: flex; justify-content:center; width: 100%">
+          <h3 class="title" >{{category | translate}}</h3>
+        </div>
+      </div>
+      <!-- /section title -->
+
+      <!-- Products tab & slick -->
+<div style="display: flex; justify-content: space-between; width: 100%">
+<!--      <div class="product-properties">-->
+<!--        <div style="display: flex; flex-direction: column; width: 100%;     padding-right: 10px;  padding-left: 10px; ">-->
+<!--          <span style="display: flex; justify-content: center; font-weight: bold; ">{{  "Properties" | translate}}</span>-->
+<!--          <br/>-->
+<!--          <br/>-->
+<!--        <div style="display: flex; flex-direction: column; gap: 40px">-->
+
+<!--          <div style="display: flex; flex-direction: column">-->
+<!--            <span style="font-weight: bold; display: flex; justify-content: start; ">{{ "Category" | translate}}</span>-->
+<!--            <div style="display:flex; flex-wrap: wrap ; justify-content: start;">-->
+
+<!--              <div class="form-check form-check-inline">-->
+
+<!--                <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio1" value="Men" (change)="filterProduct('men', 'sex')" [(ngModel)]="sex" [ngModelOptions]="{standalone: true}">-->
+<!--                <label class="form-check-label" for="inlineRadio1">{{'Men' | translate}}</label>-->
+<!--              </div>-->
+<!--              <div class="form-check form-check-inline">-->
+<!--                <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio2" value="Women" (change)="filterProduct('women', 'sex')"  [(ngModel)]="sex" [ngModelOptions]="{standalone: true}">-->
+<!--                <label class="form-check-label" for="inlineRadio2">{{'Women' | translate}}</label>-->
+<!--              </div>-->
+<!--              <div class="form-check form-check-inline">-->
+<!--                <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio55" value="Both" (change)="filterProduct('both', 'sex')"  [(ngModel)]="sex" [ngModelOptions]="{standalone: true}">-->
+<!--                <label class="form-check-label" for="inlineRadio2">{{'Both' | translate}}</label>-->
+<!--              </div>-->
+
+
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div style="display: flex; flex-direction: column">-->
+<!--          <span style="font-weight: bold; display: flex; justify-content: start; ">{{'Size' | translate}}</span>-->
+<!--          <div style="display:flex; flex-wrap: wrap;justify-content: start;">-->
+
+<!--            <div class="form-check form-check-inline">-->
+<!--              <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio3" value="XS" (change)="filterProduct('xs', 'size')"   [(ngModel)]="size" [ngModelOptions]="{standalone: true}">-->
+<!--              <label class="form-check-label" for="inlineRadio3">XS</label>-->
+<!--            </div>-->
+<!--            <div class="form-check form-check-inline">-->
+<!--              <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio4" value="S"  (change)="filterProduct('s', 'size')" [(ngModel)]="size" [ngModelOptions]="{standalone: true}">-->
+<!--              <label class="form-check-label" for="inlineRadio4">S</label>-->
+<!--            </div>-->
+<!--            <div class="form-check form-check-inline">-->
+<!--              <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio5" value="M" (change)="filterProduct('m', 'size')" [(ngModel)]="size" [ngModelOptions]="{standalone: true}">-->
+<!--              <label class="form-check-label" for="inlineRadio5">M</label>-->
+<!--            </div>-->
+<!--            <div class="form-check form-check-inline">-->
+<!--              <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio6" value="L" (change)="filterProduct('l', 'size')" [(ngModel)]="size" [ngModelOptions]="{standalone: true}">-->
+<!--              <label class="form-check-label" for="inlineRadio6">L</label>-->
+<!--            </div>-->
+<!--            <div class="form-check form-check-inline">-->
+<!--              <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio7" value="XL" (change)="filterProduct('xl', 'size')" [(ngModel)]="size" [ngModelOptions]="{standalone: true}">-->
+<!--              <label class="form-check-label" for="inlineRadio7">XL</label>-->
+<!--            </div>-->
+
+<!--          </div>-->
+<!--          </div>-->
+<!--          <div style="display: flex; flex-direction: column">-->
+<!--            <span style="font-weight: bold; display: flex; justify-content: start; ">{{'Color' | translate}}</span>-->
+<!--            <div style="display:flex; flex-wrap: wrap;justify-content: start;">-->
+
+<!--              <div class="form-check form-check-inline">-->
+<!--                <button class="color-button btn1" (click)="filterProduct('red', 'color')">-->
+<!--                </button>-->
+<!--              </div>-->
+<!--              <div class="form-check form-check-inline">-->
+<!--                <button class="color-button btn7" (click)="filterProduct('white', 'color')">-->
+<!--                </button>-->
+<!--              </div>-->
+
+<!--              <div class="form-check form-check-inline">-->
+<!--                <button class="color-button btn2" (click)="filterProduct('green', 'color')">-->
+<!--                </button>-->
+<!--              </div>-->
+
+<!--              <div class="form-check form-check-inline">-->
+<!--                <button class="color-button btn3" (click)="filterProduct('blue', 'color')" >-->
+<!--                </button>-->
+<!--              </div>-->
+<!--              <div class="form-check form-check-inline">-->
+<!--                <button class="color-button btn4" (click)="filterProduct('yellow', 'color')" >-->
+<!--                </button>-->
+<!--              </div>-->
+<!--              <div class="form-check form-check-inline">-->
+<!--                <button class="color-button btn6" (click)="filterProduct('black', 'color')" >-->
+<!--                </button>-->
+<!--              </div>-->
+<!--              <div class="form-check form-check-inline">-->
+<!--                <button class="color-button btn5" (click)="filterProduct('pink', 'color')" >-->
+<!--                </button>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div style="display: flex; flex-direction: column">-->
+<!--            <span style="font-weight: bold; display: flex; justify-content: start; ">{{ "Length" | translate}}</span>-->
+<!--            <div style="display:flex; flex-wrap: wrap;justify-content: start;">-->
+
+<!--              <div class="form-check form-check-inline">-->
+<!--                <input class="form-check-input" type="radio" name="inlineRadioOptions3" id="inlineRadio9" value="Long" (change)="filterProduct('long', 'length')" [(ngModel)]="length" [ngModelOptions]="{standalone: true}">-->
+<!--                <label class="form-check-label" for="inlineRadio9">{{ "Long" | translate}}</label>-->
+<!--              </div>-->
+<!--              <div class="form-check form-check-inline">-->
+<!--                <input class="form-check-input" type="radio" name="inlineRadioOptions3" id="inlineRadio10" value="Normal" (change)="filterProduct('normal', 'length')" [(ngModel)]="length" [ngModelOptions]="{standalone: true}">-->
+<!--                <label class="form-check-label" for="inlineRadio10">{{ "Normal" | translate}}</label>-->
+<!--              </div>-->
+<!--              <div class="form-check form-check-inline">-->
+<!--                <input class="form-check-input" type="radio" name="inlineRadioOptions3" id="inlineRadio11" value="Crop"  (change)="filterProduct('crop', 'length')" [(ngModel)]="length" [ngModelOptions]="{standalone: true}">-->
+<!--                <label class="form-check-label" for="inlineRadio11">{{ "Crop" | translate}}</label>-->
+<!--              </div>-->
+<!--              <div class="form-check form-check-inline">-->
+<!--                <input class="form-check-input" type="radio" name="inlineRadioOptions3" id="inlineRadio12" value="MicroCrop"  (change)="filterProduct('microcrop', 'length')" [(ngModel)]="length" [ngModelOptions]="{standalone: true}">-->
+<!--                <label class="form-check-label" for="inlineRadio12">{{ "MicroCrop" | translate}}</label>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+
+
+<!--          <div style="display: flex; flex-direction: column">-->
+<!--            <span style="font-weight: bold; display: flex; justify-content: start; ">{{ "Material" | translate}}</span>-->
+<!--            <div style="display:flex; flex-wrap: wrap;justify-content: start;">-->
+
+<!--              <div class="form-check form-check-inline">-->
+<!--                <input class="form-check-input" type="radio" name="inlineRadioOptions4" id="inlineRadio13" (change)="filterProduct('aluminium', 'material')" value="Aluminium" [(ngModel)]="material" [ngModelOptions]="{standalone: true}">-->
+<!--                <label class="form-check-label" for="inlineRadio13">{{ "Aluminium" | translate}}</label>-->
+<!--              </div>-->
+<!--              <div class="form-check form-check-inline">-->
+<!--                <input class="form-check-input" type="radio" name="inlineRadioOptions4" id="inlineRadio14"   (change)="filterProduct('canvas', 'material')"  value="Canvas" [(ngModel)]="material" [ngModelOptions]="{standalone: true}">-->
+<!--                <label class="form-check-label" for="inlineRadio14">{{ "Canvas" | translate}}</label>-->
+<!--              </div>-->
+<!--              <div class="form-check form-check-inline">-->
+<!--                <input class="form-check-input" type="radio" name="inlineRadioOptions4" id="inlineRadio15" value="Chiffon"   (change)="filterProduct('chiffon', 'material')"  [(ngModel)]="material" [ngModelOptions]="{standalone: true}">-->
+<!--                <label class="form-check-label" for="inlineRadio15">{{ "Chiffon" | translate}}</label>-->
+<!--              </div>-->
+<!--            </div>-->
+
+<!--          </div>-->
+<!--&lt;!&ndash;          <button class="filter-btn" (click)="filterProduct()" ><p style="color:white; margin-bottom: 5px">{{'Filter' | translate}}</p></button>&ndash;&gt;-->
+<!--        </div>-->
+<!--        </div>-->
+
+<!--      </div>-->
+      <div class="col-md-12" >
+        <div class="row">
+
+
+
+
+            <!-- tab -->
+          <div class="col-ms-4 col-sm-6" *ngFor="let p of products" style="flex:0 0 33%">
+            <div class="card my-2">
+              <img [src]="p.image" alt="{{p.name}}" width="200px" style="max-height: 250px; object-fit: contain" class="card-img-top" (click)="openProductPopup(p.id)"/>
+
+              <div class="card-title">
+                <p> {{p.name | titlecase}}</p>
+                <p class="lead" style="font-family: cursive"> {{p.price | currency:'USD'}}</p>
+              </div>
+
+              <div class="card-body">
+                <h6> {{p.description.substring(0,25)}}</h6>
+
+              </div>
+              <div class="row d-flex border-primary my-3 align-items-center justify-content-center  ">
+
+      <div style="    display: flex; justify-content: center;width: 100%; gap: 15px; align-items: center">
+                  <button class="addToCart add-to-cart-btn add_btn" [class.disabled]="p.quantity<1" (click)="AddToCart(p.id, p.quantity)"><i class="fa fa-shopping-cart"></i>  <p *ngIf="!mobile">{{"ADD to cart" | translate }}</p></button>
+<!--        <button class="redHeart">-->
+        <button class=" add-to-cart-btn  add_wish_list" [class.disabled]="p.quantity<1" (click)="AddToWishList(p)"><i class="fa fa-heart"></i>  <p *ngIf="!mobile">{{"ADD to wish list" | translate }}</p></button>
+      </div>
+              </div>
+            </div>
+
+
+          </div>
+              <div class="products-slick" data-nav="#slick-nav-1">
+                <!-- product -->
+        </div>
+      </div>
+      <!-- Products tab & slick -->
+    </div>
+</div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+</div>
+<!-- /SECTION -->
+
+
+<!-- HOT DEAL SECTION -->
+<div id="hot-deal" class="section" >
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="hot-deal">
+          <ul class="hot-deal-countdown">
+            <li>
+              <div>
+                <h3 id="days">00</h3>
+                <span>{{'Days' | translate}}</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h3 id="hours">00</h3>
+                <span>{{'Hours' | translate}}</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h3 id="min">00</h3>
+                <span>{{'Mins' | translate}}</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h3 id="sec">00</h3>
+                <span>{{'Secs' | translate}}</span>
+              </div>
+            </li>
+          </ul>
+          <h2 class="text-uppercase">{{"hot deal this week" | translate}}</h2>
+          <p>{{"New Collection Up to 50% OFF" |translate}}</p>
+          <a class="primary-btn cta-btn" href="/deals">{{"Shop now" | translate}}</a>
+        </div>
+      </div>
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+</div>
+<!-- /HOT DEAL SECTION -->
+
+<!-- SECTION -->
+<div class="section">
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <div class="row">
+
+      <!-- section title -->
+<!--      <div class="col-md-12">-->
+<!--        <div class="section-title">-->
+<!--          <h3 class="title">Top selling</h3>-->
+<!--          <div class="section-nav">-->
+<!--            <ul class="section-tab-nav tab-nav">-->
+<!--              <li class="active"><a data-toggle="tab" href="#tab2">Laptops</a></li>-->
+<!--              <li><a data-toggle="tab" href="#tab2">Smartphones</a></li>-->
+<!--              <li><a data-toggle="tab" href="#tab2">Cameras</a></li>-->
+<!--              <li><a data-toggle="tab" href="#tab2">Accessories</a></li>-->
+<!--            </ul>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+      <!-- /section title -->
+
+      <!-- Products tab & slick -->
+<!--      <div class="col-md-12">-->
+<!--        <div class="row">-->
+<!--          <div class="products-tabs">-->
+<!--            &lt;!&ndash; tab &ndash;&gt;-->
+<!--            <div id="tab2" class="tab-pane fade in active">-->
+<!--              <div class="products-slick" data-nav="#slick-nav-2">-->
+<!--                &lt;!&ndash; product &ndash;&gt;-->
+<!--                <div class="product">-->
+<!--                  <div class="product-img">-->
+<!--                    <img src="/assets/img/product06.png" alt="">-->
+<!--                    <div class="product-label">-->
+<!--                      <span class="sale">-30%</span>-->
+<!--                      <span class="new">NEW</span>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                  <div class="product-body">-->
+<!--                    <p class="product-category">Category</p>-->
+<!--                    <h3 class="product-name"><a href="#">product name goes here</a></h3>-->
+<!--                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>-->
+<!--                    <div class="product-rating">-->
+<!--                      <i class="fa fa-star"></i>-->
+<!--                      <i class="fa fa-star"></i>-->
+<!--                      <i class="fa fa-star"></i>-->
+<!--                      <i class="fa fa-star"></i>-->
+<!--                      <i class="fa fa-star"></i>-->
+<!--                    </div>-->
+<!--                    <div class="product-btns">-->
+<!--                      <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>-->
+<!--                      <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>-->
+<!--                      <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                  <div class="add-to-cart">-->
+<!--                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                &lt;!&ndash; /product &ndash;&gt;-->
+
+<!--                &lt;!&ndash; product &ndash;&gt;-->
+<!--                <div class="product">-->
+<!--                  <div class="product-img">-->
+<!--                    <img src="/assets/img/product07.png" alt="">-->
+<!--                    <div class="product-label">-->
+<!--                      <span class="new">NEW</span>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                  <div class="product-body">-->
+<!--                    <p class="product-category">Category</p>-->
+<!--                    <h3 class="product-name"><a href="#">product name goes here</a></h3>-->
+<!--                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>-->
+<!--                    <div class="product-rating">-->
+<!--                      <i class="fa fa-star"></i>-->
+<!--                      <i class="fa fa-star"></i>-->
+<!--                      <i class="fa fa-star"></i>-->
+<!--                      <i class="fa fa-star"></i>-->
+<!--                      <i class="fa fa-star-o"></i>-->
+<!--                    </div>-->
+<!--                    <div class="product-btns">-->
+<!--                      <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>-->
+<!--                      <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>-->
+<!--                      <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                  <div class="add-to-cart">-->
+<!--                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                &lt;!&ndash; /product &ndash;&gt;-->
+
+<!--                &lt;!&ndash; product &ndash;&gt;-->
+<!--                <div class="product">-->
+<!--                  <div class="product-img">-->
+<!--                    <img src="/assets/img/product08.png" alt="">-->
+<!--                    <div class="product-label">-->
+<!--                      <span class="sale">-30%</span>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                  <div class="product-body">-->
+<!--                    <p class="product-category">Category</p>-->
+<!--                    <h3 class="product-name"><a href="#">product name goes here</a></h3>-->
+<!--                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>-->
+<!--                    <div class="product-rating">-->
+<!--                    </div>-->
+<!--                    <div class="product-btns">-->
+<!--                      <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>-->
+<!--                      <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>-->
+<!--                      <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                  <div class="add-to-cart">-->
+<!--                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                &lt;!&ndash; /product &ndash;&gt;-->
+
+<!--                &lt;!&ndash; product &ndash;&gt;-->
+<!--                <div class="product">-->
+<!--                  <div class="product-img">-->
+<!--                    <img src="/assets/img/product09.png" alt="">-->
+<!--                  </div>-->
+<!--                  <div class="product-body">-->
+<!--                    <p class="product-category">Category</p>-->
+<!--                    <h3 class="product-name"><a href="#">product name goes here</a></h3>-->
+<!--                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>-->
+<!--                    <div class="product-rating">-->
+<!--                      <i class="fa fa-star"></i>-->
+<!--                      <i class="fa fa-star"></i>-->
+<!--                      <i class="fa fa-star"></i>-->
+<!--                      <i class="fa fa-star"></i>-->
+<!--                      <i class="fa fa-star"></i>-->
+<!--                    </div>-->
+<!--                    <div class="product-btns">-->
+<!--                      <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>-->
+<!--                      <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>-->
+<!--                      <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                  <div class="add-to-cart">-->
+<!--                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                &lt;!&ndash; /product &ndash;&gt;-->
+
+<!--                &lt;!&ndash; product &ndash;&gt;-->
+<!--                <div class="product">-->
+<!--                  <div class="product-img">-->
+<!--                    <img src="/assets/img/product01.png" alt="">-->
+<!--                  </div>-->
+<!--                  <div class="product-body">-->
+<!--                    <p class="product-category">Category</p>-->
+<!--                    <h3 class="product-name"><a href="#">product name goes here</a></h3>-->
+<!--                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>-->
+<!--                    <div class="product-rating">-->
+<!--                      <i class="fa fa-star"></i>-->
+<!--                      <i class="fa fa-star"></i>-->
+<!--                      <i class="fa fa-star"></i>-->
+<!--                      <i class="fa fa-star"></i>-->
+<!--                      <i class="fa fa-star"></i>-->
+<!--                    </div>-->
+<!--                    <div class="product-btns">-->
+<!--                      <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>-->
+<!--                      <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>-->
+<!--                      <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                  <div class="add-to-cart">-->
+<!--                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                &lt;!&ndash; /product &ndash;&gt;-->
+<!--              </div>-->
+<!--              <div id="slick-nav-2" class="products-slick-nav"></div>-->
+<!--            </div>-->
+<!--            &lt;!&ndash; /tab &ndash;&gt;-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+      <!-- /Products tab & slick -->
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+</div>
+<!-- /SECTION -->
+
+
+<!-- NEWSLETTER -->
+<div id="newsletter" class="section">
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="newsletter">
+          <p>Sign Up for the <strong>NEWSLETTER</strong></p>
+          <form>
+            <input class="input" type="email" placeholder="Enter Your Email">
+
+            <button class="newsletter-btn" >      <a routerLink="/thankyou"><i class="fa fa-envelope"></i> Subscribe</a></button>
+
+          </form>
+          <ul class="newsletter-follow">
+            <li>
+              <a href="#"><i class="fa fa-facebook"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-twitter"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-instagram"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-pinterest"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+</div>
+      <!--  footer-->
+      <footer id="footer" >
+        <!-- top footer -->
+        <div class="section">
+          <!-- container -->
+          <div class="container" style="display: flex; justify-content: space-around; width: 100%">
+            <!-- row -->
+            <div class="row">
+              <div class="col-md-3 col-xs-6">
+                <div class="footer">
+                  <h3 class="footer-title">About Us</h3>
+                  <p class="footer-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
+                  <ul>
+                    <li class="footer-text"><a href="#" class="footer-text"><i class="fa fa-map-marker "></i>1734 Stonecoal Road</a></li>
+                    <li class="footer-text"><a href="#" class="footer-text"><i class="fa fa-phone "></i>+021-95-51-84</a></li>
+                    <li class="footer-text"><a href="#" class="footer-text"><i class="fa fa-envelope-o"></i>email@email.com</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="col-md-3 col-xs-6" *ngIf="user">
+                <div class="footer">
+                  <h3 class="footer-title">Categories</h3>
+                  <ul class="footer-links"  *ngFor="let category of allCategories">
+                    <li style="margin-bottom: 10px"><a (click)="productsByCategory(category)" class="footer-text" href="#">{{category}}</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="clearfix visible-xs"></div>
+
+              <div class="col-md-3 col-xs-6" >
+                <div class="footer">
+                  <h3 class="footer-title">Information</h3>
+                  <ul class="footer-links">
+                    <li ><a href="#" class="footer-text">About Us</a></li>
+                    <li><a href="#" class="footer-text">Contact Us</a></li>
+                    <li><a href="#" class="footer-text">Privacy Policy</a></li>
+                    <li><a href="#" class="footer-text">Orders and Returns</a></li>
+                    <li><a href="#" class="footer-text">Terms & Conditions</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="col-md-3 col-xs-6" *ngIf="user">
+                <div class="footer">
+                  <h3 class="footer-title">Service</h3>
+                  <ul class="footer-links">
+                    <li class="footer-text"><a href="/cart" class="footer-text">View Cart</a></li>
+                    <li class="footer-text"><a href="/wishList" class="footer-text">Wishlist</a></li>
+                    <li class="footer-text"><a href="#/help" class="footer-text">Help</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- /row -->
+          </div>
+          <!-- /container -->
+        </div>
+        <!-- /top footer -->
+
+        <!-- bottom footer -->
+        <div id="bottom-footer" class="section">
+          <div class="container">
+            <!-- row -->
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <ul class="footer-payments">
+                  <li><a href="#"><i class="fa fa-cc-visa"></i></a></li>
+                  <li><a href="#"><i class="fa fa-credit-card"></i></a></li>
+                  <li><a href="#"><i class="fa fa-cc-paypal"></i></a></li>
+                  <li><a href="#"><i class="fa fa-cc-mastercard"></i></a></li>
+                  <li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
+                  <li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
+                </ul>
+                <span class="copyright">
+								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+								Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved to Artiom Kronik | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+							</span>
+              </div>
+            </div>
+            <!-- /row -->
+          </div>
+          <!-- /container -->
+        </div>
+        <!-- /bottom footer -->
+      </footer>
+</div>
+
+
+</div>
+
+
+<!-- /NEWSLETTER -->
+<style lang="scss">
+
+
+
+  .category-p:after {
+    content: "";
+    display: block;
+    width: 0%;
+    height: 2px;
+    background-color: white;
+    -webkit-transition: 0.2s all;
+    transition: 0.2s all;
+  }
+
+
+  .card {
+    position: relative;
+    margin: 50px ;
+    border:none;
+  }
+
+  redHeart:hover{
+    background: red;
+  }
+  .card:hover {
+    transition: 0.5s ease-in-out;
+    transform: scale(1.1);
+  }
+
+
+  .card-body {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+ .card-title {
+   display: flex;
+   width: 100%;
+   justify-content: center;
+align-items: baseline;
+   gap: 15px;
+   font-weight: 500;
+   font-size: 1.5rem;
+ }
+
+
+
+</style>

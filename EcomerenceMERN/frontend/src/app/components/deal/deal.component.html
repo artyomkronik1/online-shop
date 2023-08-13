@@ -1,0 +1,80 @@
+
+<div>
+
+  <app-toggle-loading *ngIf="loading===true"/>
+
+
+  <!--  loggin-->
+  <div *ngIf="(logged===false  || !logged )&& signdup===true">
+    <app-login/>
+  </div>
+  <!--sign up-->
+  <div *ngIf="signdup===false || !signdup">
+    <app-signup/>
+  </div>
+
+<div class="section"  *ngIf="signdup==true && logged===true">
+
+
+
+  <!-- /section title -->
+
+  <!-- Products tab & slick -->
+  <div class="container">
+    <!-- row -->
+    <div class="row">
+
+      <!-- section title -->
+      <div class="col-md-12">
+        <div class="section-title">
+          <h3 class="title">Deals</h3>
+        </div>
+      </div>
+      <!-- /section title -->
+
+      <!-- Products tab & slick -->
+      <div class="col-md-12">
+        <div class="row">
+          <!-- tab -->
+          <div class="col-ms-4 col-sm-6" *ngFor="let p of products">
+            <div class="card my-2">
+              <img [src]="p.image" alt="{{p.name}}" width="200px" class="card-img-top" style="cursor: pointer" (click)="selectProduct(p.id)"/>
+
+              <div class="card-title">
+                <p> {{p.name | titlecase}}</p>
+                <p class="lead" style="font-family: cursive"> {{p.price | currency:'USD'}}</p>
+              </div>
+
+              <div class="card-body">
+                <h6> {{p.description.substring(0,25)}}</h6>
+
+              </div>
+              <div class="row d-flex border-primary my-3 align-items-center justify-content-center  ">
+
+                <div style="    display: flex; justify-content: space-around;width: 100%;">
+                  <button class="add-to-cart-btn add_btn" [class.disabled]="p.quantity<1" (click)="AddToCart(p.id, p.quantity)"><i class="fa fa-shopping-cart"></i>  {{p.quantity < 1 ? "NO STOCK" :"ADD to cart"}}</button>
+
+                  <svg class="redHeart" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" class="bi bi-heart" viewBox="0 0 16 16" (click)="AddToWishList(p)">
+                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                  </svg>
+
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+          <div class="products-slick" data-nav="#slick-nav-1">
+            <!-- product -->
+          </div>
+        </div>
+        <!-- Products tab & slick -->
+      </div>
+      <!-- /row -->
+    </div>
+    <!-- /container -->
+  </div>
+
+  <!-- /row -->
+</div>
+</div>

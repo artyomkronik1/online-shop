@@ -1,0 +1,92 @@
+<div class="account" *ngIf="logged===true">
+  <div class="account_d">
+
+
+
+    <h3 class="h_details"> Account Details</h3>
+  <div class="account_details">
+    <div class="details_pic">
+      <div class="pic_container">
+      <div style="display:flex; justify-content: space-between; width:90% ; align-items: center">
+      <div style="display: flex; flex-direction: row; align-items: center; gap: 8px">
+        <div _ngcontent-dtd-c26="" class="profile__photo ng-star-inserted"><!----></div>
+        <h4 style="gap: 5px"> {{user.name}}</h4>
+      </div>
+        <ul>
+          <div style="display: flex; flex-direction: row; align-items: center">
+
+            <li (click)="logout()"><a href="#"><i class="fa fa-sign-out" style="font-size: 35px"></i>  </a></li>
+          </div>
+        </ul>
+      </div>
+      </div>
+    <div class="details">
+      <div class="detail">
+      <p>Full Name</p> <input _ngcontent-dtd-c26="" type="text" formcontrolname="name" class="brand-input-bg brand-r-inputs ng-untouched ng-pristine form-site-input" >
+      </div>
+      <div class="detail">
+      <p>Phone</p> <input _ngcontent-dtd-c26="" type="text" formcontrolname="phone" class="brand-input-bg brand-r-inputs ng-untouched ng-pristine form-site-input" >
+      </div>
+      <div class="detail">
+      <p>Birthday</p> <input _ngcontent-dtd-c26="" type="date" formcontrolname="phone" class="brand-input-bg brand-r-inputs ng-untouched ng-pristine form-site-input" >
+    </div>
+      <div class="detail">
+        <p>Happy day</p> <input _ngcontent-dtd-c26="" type="date" formcontrolname="phone" class="brand-input-bg brand-r-inputs ng-untouched ng-pristine form-site-input" >
+      </div>
+
+
+    </div>
+
+
+    </div>
+  </div>
+  </div>
+  <div class="history__orders">
+      <h3 class="h_title"> Orders History</h3>
+    <ng-container  class="orders_table">
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table">
+            <thead class="table-dark">
+            <tr class="text-center">
+              <th>Image</th>
+              <th>Title</th>
+              <th>Price</th>
+
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr >
+              <td class="d-flex align-items-center justify-content-around">
+                <img style="border-radius: 30px"  height="60" class="order-1"/>
+                <span class="text-danger"> <i class="fa fa-trash p-4" style="cursor: pointer" ></i></span>
+              </td>
+              <td >
+                <p style="display: flex; justify-content: center; width: 100%;">
+
+                </p>
+              </td>
+
+              <td style="display: flex; justify-content: center; width: 100%;">
+                <p> </p>
+              </td>
+
+
+            </tr>
+
+            <tr class="border-0">
+              <td style="border: none"></td>
+              <td></td>          <td></td>
+
+            </tr>
+
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+

@@ -1,0 +1,79 @@
+<div class="container my-5" [dir]="dir" >
+<!--when the cart is empty-->
+<div class="text-center my-5" *ngIf="cartData.data[0].numInCart===0" style="display: flex; flex-direction: column; align-items: center">
+  <h4> {{"Your Cart is Empty" | translate}}</h4>
+  <button class="btn btn-lg mt-3 add_wish_list" style="width: 25%;" routerLink="/"> <i class="fa fa-shopping-cart"></i> {{ "Go To Shop"| translate}}</button>
+</div>
+
+
+  <ng-container *ngIf="cartData.data[0].numInCart!==0">
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table">
+              <thead class="table-dark">
+                  <tr class="text-center">
+                    <th>{{ 'Image' | translate }}</th>
+                    <th>{{ 'Title' | translate }}</th>
+                    <th>{{ 'Price' | translate }}</th>
+                    <th>{{ 'Quantity' | translate }}</th>
+                    <th>{{ 'Subtotal' | translate }}</th>
+                  </tr>
+              </thead>
+
+          <tbody>
+              <tr *ngFor="let c of cartData.data; let i = index">
+                <td class="d-flex align-items-center justify-content-around">
+                    <img style="border-radius: 30px" [src]="c.product.image" alt="{{c.product.name}}" height="60" class="order-1"/>
+                  <span class="text-danger"> <i class="fa fa-trash p-4" style="cursor: pointer" (click)="cartService.DeleteProductFromCart(i)"></i></span>
+                </td>
+                <td>
+                  <p>
+                    {{c.product.name}}
+                  </p>
+                </td>
+
+                <td>
+                    <p style="font-family: cursive"> {{c.product.price | currency:'USD'}}</p>
+                </td>
+
+                <td>
+                  <form>
+                        <div class="value-button" id="decrease" (click)="ChangeQuantity(i, false)">
+                        <i class="fa fa-minus"></i>
+                      </div>
+                    <input type="number" id="number" [value]="c.numInCart" readonly [max]="c.product.quantity" />
+                    <div class="value-button" id="increase" (click)="ChangeQuantity(i, true)">
+                      <i class="fa fa-plus"></i>
+                    </div>
+                  </form>
+                </td>
+
+                <td>
+                  <p>
+                    {{cartService.CalculateSubTotal(i) | currency:'USD'}}
+                  </p>
+                </td>
+              </tr>
+
+          <tr class="border-0">
+            <td style="border: none"></td>
+            <td></td>
+            <td></td>
+            <td>{{ 'TOTAL' | translate}}</td>
+            <td>{{cartTotal | currency:'USD'}}</td>
+          </tr>
+
+
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-12 d-flex mb-5">
+        <div class="d-flex justify-content-between flex-sm-column flex-md-row w-100">
+          <a routerLink="/checkout" class="btn btn-danger btn-sm order-1">{{ 'Checkout' | translate}}</a>
+          <a routerLink="/" class="btn btn-success btn-sm order-0">{{ "Continue Shopping" | translate}}</a>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+<!--  when the cart has items-->
+</div>

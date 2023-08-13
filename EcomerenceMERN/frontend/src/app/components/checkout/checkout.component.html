@@ -1,0 +1,173 @@
+<ngx-spinner
+  bdColor= "#FFFAF0"
+  size="large"
+  color="orange"
+  [type]="spinnerType"
+
+>
+  <p style="font-size: 20px; color: black;">Booking Order...</p>
+</ngx-spinner>
+
+
+ <div id="checkout" class="section"  [dir]="dir">
+  <!-- container -->
+  <div class="container" *ngIf="length > 0">
+    <!-- row -->
+    <div class="row">
+
+      <div class="col-md-7">
+        <!-- Billing Details -->
+        <div class="billing-details">
+          <div class="section-title" style="display:flex;">
+            <h3 class="title">{{ "Billing address"  | translate}}</h3>
+          </div>
+          <div class="form-group">
+            <input class="input" type="text" name="first-name" placeholder="{{'First Name' | translate}}">
+          </div>
+          <div class="form-group">
+            <input class="input" type="text" name="last-name" placeholder="{{'Last Name' | translate}}">
+          </div>
+          <div class="form-group">
+            <input class="input" type="email" name="email" placeholder="{{'Email' | translate}}">
+          </div>
+          <div class="form-group">
+            <input class="input" type="text" name="address" placeholder="{{'Address' | translate}}">
+          </div>
+          <div class="form-group">
+            <input class="input" type="text" name="city" placeholder="{{'City' | translate}}">
+          </div>
+          <div class="form-group">
+            <input class="input" type="text" name="country" placeholder="{{'Country' | translate}}">
+          </div>
+          <div class="form-group">
+            <input class="input" type="text" name="zip-code" placeholder="{{'Country' | translate}}">
+          </div>
+          <div class="form-group">
+            <input class="input" type="tel" name="tel" placeholder="{{'Telephone' | translate}}">
+          </div>
+          <div class="form-group">
+            <div class="input-checkbox">
+              <input type="checkbox" id="create-account">
+              <label for="create-account">
+                <span></span>
+                Create Account?
+              </label>
+              <div class="caption">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+                <input class="input" type="password" name="password" placeholder="Enter Your Password">
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /Billing Details -->
+
+        <!-- Shiping Details -->
+<!--        <div class="shiping-details">-->
+<!--          <div class="section-title">-->
+<!--            <h3 class="title">Shiping address</h3>-->
+<!--          </div>-->
+<!--          <div class="input-checkbox">-->
+<!--            <input type="checkbox" id="shiping-address">-->
+<!--&lt;!&ndash;            <label for="shiping-address">&ndash;&gt;-->
+<!--&lt;!&ndash;              <span></span>&ndash;&gt;-->
+<!--&lt;!&ndash;              Ship to a diffrent address?&ndash;&gt;-->
+<!--&lt;!&ndash;            </label>&ndash;&gt;-->
+<!--            <div class="caption">-->
+<!--              <div class="form-group">-->
+<!--                <input class="input" type="text" name="first-name" placeholder="First Name">-->
+<!--              </div>-->
+<!--              <div class="form-group">-->
+<!--                <input class="input" type="text" name="last-name" placeholder="Last Name">-->
+<!--              </div>-->
+<!--              <div class="form-group">-->
+<!--                <input class="input" type="email" name="email" placeholder="Email">-->
+<!--              </div>-->
+<!--              <div class="form-group">-->
+<!--                <input class="input" type="text" name="address" placeholder="Address">-->
+<!--              </div>-->
+<!--              <div class="form-group">-->
+<!--                <input class="input" type="text" name="city" placeholder="City">-->
+<!--              </div>-->
+<!--              <div class="form-group">-->
+<!--                <input class="input" type="text" name="country" placeholder="Country">-->
+<!--              </div>-->
+<!--              <div class="form-group">-->
+<!--                <input class="input" type="text" name="zip-code" placeholder="ZIP Code">-->
+<!--              </div>-->
+<!--              <div class="form-group">-->
+<!--                <input class="input" type="tel" name="tel" placeholder="Telephone">-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+        <!-- /Shiping Details -->
+
+        <!-- Order notes -->
+        <div class="order-notes">
+          <textarea class="input" placeholder="Order Notes"></textarea>
+        </div>
+        <!-- /Order notes -->
+      </div>
+
+      <!-- Order Details -->
+      <div class="col-md-5 order-details">
+        <div class="section-title text-center">
+          <h3 class="title">{{ 'Your Order' | translate }}</h3>
+        </div>
+        <div class="order-summary">
+          <div class="order-col">
+            <div style="display: flex; justify-content: center"><strong>{{'PRODUCT' | translate}}</strong></div>
+            <div style="display: flex; justify-content: center"><strong>{{ 'TOTAL' | translate}}</strong></div>
+          </div>
+          <div class="order-products">
+            <div class="order-col" *ngFor="let c of cartData.data">
+              <div style="display: flex; justify-content: center" *ngIf="dir=='ltr'">{{c.numInCart}} x {{c.product.name}}</div>
+              <div style="display: flex; justify-content: center" *ngIf="dir=='rtl'"> {{c.product.name}} x {{c.numInCart}}   </div>
+              <div style="display: flex; justify-content: center ;font-family: cursive">{{(c?.product?.price * c.numInCart) | currency:'USD'}}</div>
+            </div>
+
+          </div>
+          <div class="order-col">
+            <div style="display: flex; justify-content: center">{{'Shiping' | translate}}</div>
+            <div style="display: flex; justify-content: center"><strong>{{'FREE' | translate}}</strong></div>
+          </div>
+          <div class="order-col">
+            <div style="display: flex; justify-content: center"><strong>{{'TOTAL' |translate}}</strong></div>
+            <div style="display: flex; justify-content: center"><strong class="order-total">{{cartTotal | currency:'USD'}}</strong></div>
+          </div>
+
+          <div  style="width: 100%;">
+            <!-- For demo purpose -->
+
+
+
+
+        <div class="input-checkbox">
+          <input type="checkbox" id="terms">
+          <label for="terms">
+            <span></span>
+           {{ "I've read and accept the" | translate }} <a href="#"> {{ "terms & conditions"  |translate }}</a>
+          </label>
+        </div>
+
+
+
+
+
+        <button class="btn btn-outline-danger btn-sm my-2 btn-block order-submit" (click)="openDialogPayment()">{{'Place order' | translate}}</button>
+      </div>
+      <!-- /Order Details -->
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+</div>
+<!-- /SECTION -->
+
+  </div>
+
+
+   <div class="text-center my-5" *ngIf="cartTotal== 0" style="display:flex; flex-direction: column; align-items: center">
+     <h4>{{ "Your Cart Is Empty" | translate}}</h4>
+     <button class="btn btn-lg mt-3 add_wish_list" style="width: 25%;" routerLink="/"> <i class="fa fa-shopping-cart"></i> {{ "Go To Shop"| translate}}</button>
+   </div>
