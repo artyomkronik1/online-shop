@@ -5,6 +5,7 @@ import {ActivatedRoute, ParamMap} from '@angular/router';
 import {map} from 'rxjs/operators';
 import {TranslateService} from "@ngx-translate/core";
 import {MatDialogRef} from "@angular/material/dialog";
+import {mobile} from "../../app.component";
 
 declare let $: any;
 
@@ -152,4 +153,6 @@ export class ProductComponent  {
 
     this.cartService.AddProductToCart(id, this.product.quantity,this.product.quantity );
   }
+
+  protected readonly mobile = mobile;
 }

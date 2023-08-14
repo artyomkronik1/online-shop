@@ -118,16 +118,17 @@ goToWishListPage()
     })
   }
   openCloseSideBar(){
-    const sideBAR:any = document.getElementById("left")  as HTMLInputElement | null;
+    const sideBAR:any = document.getElementById("product-properties")  as HTMLInputElement | null;
 
     const right:any = document.getElementById("right")  as HTMLInputElement | null;
     const categories:any=document.getElementById("categories-title") as HTMLInputElement | null;
     if(this.hide===true) {
       console.log(1, sideBAR)
-      sideBAR.style.transition = "1s cubic-bezier(.36, -0.01, 0, .77);";
       sideBAR.style.width = "0%";
+      sideBAR.style.opacity = "0";
       right.style.width ="100%"
-      sideBAR.style.display = "none"
+
+
       // categories.style.fontSize="18px"
       // categories.style.marginTop="5px"
       // categories.style.marginRight="25px"
@@ -135,10 +136,9 @@ goToWishListPage()
     }
     else if(this.hide===false) {
       console.log(2, sideBAR)
-      sideBAR.style.transition = "1s cubic-bezier(.36, -0.01, 0, .77);";
       sideBAR.style.width = "30%";
+      sideBAR.style.opacity = "1";
       right.style.width ="70%"
-      sideBAR.style.display = "block"
       // categories.style.fontSize="24px"
       // categories.style.marginTop="0px"
       // categories.style.marginRight="0px"

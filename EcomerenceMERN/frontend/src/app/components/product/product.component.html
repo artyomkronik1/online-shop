@@ -1,7 +1,7 @@
 
 <!-- BREADCRUMB -->
 
-<div class="dialog fade-in-out" [dir]="dir"  >
+<div class="dialog fade-in-out" [dir]="dir"  style="width: 100%" >
   <button  mat-icon-button style="float: right; margin:5px" [mat-dialog-close]="closePopup===true">
     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
       <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
@@ -74,7 +74,7 @@
 
       <!-- Product details -->
       <div class="col-md-5">
-        <div class="product-details">
+        <div class="product-details" style="width: max-content;">
           <h2 class="product-name">{{product.name}}</h2>
           <div>
             <div class="product-rating">
@@ -107,12 +107,13 @@
                 <span class="qty-down" (click)="Decrease()">-</span>
               </div>
             </div>
-            <button class="add-to-cart-btn" (click)="addToCart(product?.id)"><i class="fa fa-shopping-cart"></i> {{ 'ADD to cart' | translate}}</button>
+            <div style="display: flex; align-items: start; gap: 10px; margin-top: 20px; flex-direction: column">
+            <button class="add-to-cart-btn" (click)="addToCart(product?.id)"><i class="fa fa-shopping-cart"></i> <p style="display:flex;align-items: center" *ngIf="!mobile">{{ 'ADD to cart' | translate}}</p></button>
+            <button class="  add_wish_list"  (click)="AddToWishList(product)"><i class="fa fa-heart"></i>  <p  *ngIf="!mobile">{{"ADD to wish list" | translate }}</p></button>
+            </div>
           </div>
 
-          <ul class="product-btns" style="display: flex; justify-content: end">
-            <button class=" add-to-cart-btn  add_wish_list"  (click)="AddToWishList(product)"><i class="fa fa-heart"></i>  <p >{{"ADD to wish list" | translate }}</p></button>
-          </ul>
+
 
           <ul class="product-links">
             <li>{{ "Category:"  | translate}}</li>

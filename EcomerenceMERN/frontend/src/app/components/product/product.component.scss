@@ -65,7 +65,7 @@
     //box-shadow: 0 12px 20px #41414140;
     //z-index:2100;
     //backdrop-filter:blur(20px);
-    width: 900px;
+    width: 1000px;
     height:635px;
 
 
@@ -82,6 +82,9 @@
 
 
 
+  }
+  .section{
+    width:max-content;
   }
   .mat-mdc-dialog-content{
     min-height: 100%;

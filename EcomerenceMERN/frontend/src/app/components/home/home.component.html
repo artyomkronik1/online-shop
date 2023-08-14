@@ -102,12 +102,26 @@
 <!-- SECTION -->
 <div class="section" id="section" *ngIf="signdup==true && logged===true" >
   <!-- container -->
-  <div class="left" id="left" style="min-width: 10%; height: 100%;; margin-top:-80px; z-index: 0; max-width: 10%; background:#efe2e754">
+  <div class="left" id="left" style="height: 100%;; margin-top:-80px; z-index: 0;  background:#efe2e754">
     <div class="product-properties" id="product-properties" >
-      <div style="display: flex; flex-direction: column; width: 100%;    padding-right: 10px;  padding-left: 10px; ">
+      <div class="properties" style="display: flex; flex-direction: column; width: 100%;    padding-right: 10px;  padding-left: 10px; ">
+        <div *ngIf="!mobile">
         <span style="display: flex; justify-content: center; font-weight: bold; ">{{  "Properties" | translate}}</span>
         <br/>
         <br/>
+      </div>
+        <div class="header-logo" *ngIf="mobile" style="margin-top: 45px;
+    margin-bottom: 70px;
+    /* top: 0px; */
+    display: flex;
+    position: relative;
+    justify-content: center;
+    width: fit-content;
+    border-radius: 30px;">
+          <a  class="logo" >
+            <img src="/assets/img/logo.png"  alt="">
+          </a>
+        </div>
         <div style="display: flex; flex-direction: column; gap: 40px;">
 
           <div style="display: flex; flex-direction: column">
@@ -514,7 +528,7 @@
 
 
             <!-- tab -->
-          <div class="col-ms-4 col-sm-6" *ngFor="let p of products" style="flex:0 0 33%">
+          <div class="col-ms-4 col-sm-6 rowsprod" *ngFor="let p of products"  >
             <div class="card my-2">
               <img [src]="p.image" alt="{{p.name}}" width="200px" style="max-height: 250px; object-fit: contain" class="card-img-top" (click)="openProductPopup(p.id)"/>
 

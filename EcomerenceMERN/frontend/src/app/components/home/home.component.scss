@@ -327,7 +327,9 @@ padding: 10px 14px;
 
 
 }
-
+.rowsprod{
+  flex:0 0 33%
+}
 .add_btn{
   gap: 10px;
   justify-content: center;
@@ -355,19 +357,25 @@ padding: 10px 14px;
 }
 .section{display: flex; justify-content: space-between; margin-top: 50px}
 @media (max-width: 767px) {
+  .rowsprod{
+    flex: none;
+  }
   .product-properties{
-    width: 30%;
-    transition: 1s cubic-bezier(.36, -0.01, 0, .77);
-    max-width: 30%;
+    max-width:30%;
+    opacity: 0;
+    transition: 0.5s cubic-bezier(.36, -0.01, 0, .77);
+    overflow-y: auto;
+    top: inherit;
   }
 
   .left{
-    transition: 1s cubic-bezier(.36, -0.01, 0, .77);
-    display: none;
+    top: 0;
+    position: relative;
+    transition: 0.5s cubic-bezier(.36, -0.01, 0, .77);
   }
   .right{
     width: 100%;
-    transition: 1s cubic-bezier(.36, -0.01, 0, .77);
+    transition: 0.5s cubic-bezier(.36, -0.01, 0, .77);
   }
   .section{
     margin-top: 0px;
