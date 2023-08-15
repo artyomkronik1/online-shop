@@ -157,10 +157,15 @@ goToWishListPage()
     this.user = JSON.parse(window.localStorage.getItem('user') as any);
     if(this.user) {
       const spaceIndex = this.user.name.indexOf(" "); // Find the index of the space
-      const first_name = this.user.name.substring(0, spaceIndex);
-      const last_name = this.user.name.substring(spaceIndex + 1);
-      this.username = first_name[0] + last_name
-
+      console.log(spaceIndex)
+      if(spaceIndex!=-1) {
+        const first_name = this.user.name.substring(0, spaceIndex);
+        const last_name = this.user.name.substring(spaceIndex + 1);
+        this.username = first_name[0] + last_name[0]
+      }
+      else{
+        this.username = this.user.name;
+      }
       this.openPopup = false;
       this.cartService.cartTotal$.subscribe(total => this.cartTotal = total);
       this.cartService.cartData$.subscribe(cartData => this.cartData = cartData);

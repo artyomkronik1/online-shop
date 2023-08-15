@@ -64,7 +64,8 @@ export class SignupComponent {
       happyday:this.happyday,
     }
     // check if data is no empty
-    if(this.username.length==0 || this.password.length==0 || this.email.length==0 || this.phone.length==0 || this.birthday.length==0 || this.happyday.length==0){
+    console.log(user)
+    if(this.username.length==0 || this.password.length==0 || this.email.length==0 || this.phone.length==0 || this.birthday.length==0 ){
       this.toast.error('One or more fields are empty', 'ERROR', {
         timeOut: 1500,
         progressBar: true,
@@ -91,9 +92,10 @@ export class SignupComponent {
             progressAnimation: 'increasing',
             positionClass: 'toast-top-right'
           });
-          document.location.reload()
+
           this.sleep(500).then(() => {
             this.router.navigate(['/']).then(() => {
+              document.location.reload()
               window.localStorage.setItem('loading', JSON.stringify(false))
             })
           })
