@@ -67,14 +67,12 @@
 
                     </a>
                   </div>
+<!--                  user name-->
               <div class="dropdown user" *ngIf="logged===true">
-
                 <div  class="userIcon">
                 <a  data-toggle="dropdown"  aria-expanded="true"><i class="fa fa-user" style="font-size: 18px;  "></i>  </a>
-                <span style="color: #FFFFFF; font-size: 14px">{{user.name}}</span>
+                <span style="color: #FFFFFF; font-size: 14px">{{username}}</span>
                 </div>
-
-
                 <div class="user-display">
                   <div class="cart-btns" style="display: flex; justify-content: space-around">
                     <button   (click)="openDialog()">{{"Account" | translate}}</button>

@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit{
   signdup:any;
   lan:any="";
   user:any=null;
+  username:String='';
   allProducts:[]=[]
   dir:any='en';
 cartData:any= {
@@ -146,12 +147,19 @@ goToWishListPage()
     }
   }
   ngOnInit():void {
+    if(JSON.parse(localStorage.getItem('lan') as any) === null) {
+      localStorage.setItem('lan', JSON.stringify('en'))
+    }
     this.category = JSON.parse(localStorage.getItem('category') as any)
     this.lan = JSON.parse(window.localStorage.getItem('lan') as any);
     this.signdup = JSON.parse(window.localStorage.getItem('signedup') as any);
     this.logged = JSON.parse(window.localStorage.getItem('logged') as any);
     this.user = JSON.parse(window.localStorage.getItem('user') as any);
     if(this.user) {
+      const spaceIndex = this.user.name.indexOf(" "); // Find the index of the space
+      const first_name = this.user.name.substring(0, spaceIndex);
+      const last_name = this.user.name.substring(spaceIndex + 1);
+      this.username = first_name[0] + last_name
 
       this.openPopup = false;
       this.cartService.cartTotal$.subscribe(total => this.cartTotal = total);

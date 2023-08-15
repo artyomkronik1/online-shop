@@ -38,42 +38,49 @@ ngOnInit(){
     })
 }
   login(){
-    this.http.post(`${this.serverURL}/login`, { email:this.email, password:this.password}).subscribe((res:any) => {
 
-      if (res.success===true) {
-     //   document.location.reload()
-        localStorage.setItem('logged', JSON.stringify(true))
-        localStorage.setItem('signedup', JSON.stringify(true))
-        localStorage.setItem('user', JSON.stringify(res.user))
-        window.localStorage.setItem('loading', JSON.stringify(true))
+    // check if data is no empty
+    if( this.password.length==0 || this.email.length==0 ){
+      this.toast.error('One or more fields are empty', 'ERROR', {
+        timeOut: 1500,
+        progressBar: true,
+        progressAnimation: 'increasing',
+        positionClass: 'toast-top-right'
+      });
+    }
+    else {
+      this.http.post(`${this.serverURL}/login`, {email: this.email, password: this.password}).subscribe((res: any) => {
+        if (res.success === true) {
+          //   document.location.reload()
+          localStorage.setItem('logged', JSON.stringify(true))
+          localStorage.setItem('signedup', JSON.stringify(true))
+          localStorage.setItem('user', JSON.stringify(res.user))
+          window.localStorage.setItem('loading', JSON.stringify(true))
+          this.sleep(500).then(() => {
+            this.router.navigate(['/']).then(() => {
+              document.location.reload()
+              window.localStorage.setItem('loading', JSON.stringify(false))
+            })
+          })
 
-        this.sleep(500).then(()=>{
-          this.router.navigate(['/']).then(()=> {
-            document.location.reload()
-          window.localStorage.setItem('loading', JSON.stringify(false))
-        })
-        })
+          //
+          //
+          this.toast.success(`${res.user.name} logged in successfuly`, 'SUCCESS', {
+            timeOut: 1500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
 
-        //
-       //
-        this.toast.success(`${res.user.name} logged in successfuly`, 'SUCCESS', {
-          timeOut: 1500,
-          progressBar: true,
-          progressAnimation: 'increasing',
-          positionClass: 'toast-top-right'
-        });
-
-      }
-    else
-      {
-        this.toast.error(`user does not exist`, 'ERROR', {
-          timeOut: 1500,
-          progressBar: true,
-          progressAnimation: 'increasing',
-          positionClass: 'toast-top-right'
-        });
-      }
-    })
-
+        } else {
+          this.toast.error(`user does not exist`, 'ERROR', {
+            timeOut: 1500,
+            progressBar: true,
+            progressAnimation: 'increasing',
+            positionClass: 'toast-top-right'
+          });
+        }
+      })
+    }
   }
 }

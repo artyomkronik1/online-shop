@@ -9,8 +9,10 @@ export const mobile = document.body.offsetWidth < 767;
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'frontend';
-  constructor(private matDialog:MatDialog) {}
+  title = 'online shop';
+  constructor(private matDialog:MatDialog) {
+
+  }
 
   protected readonly mobile = mobile;
 }
