@@ -308,7 +308,6 @@ export class CartService {
         const index =  prod.id;
         let prodAlreadyExist = false;
         this.cartDataServer.data.forEach((data:any)=>{
-          console.log('d', data)
           //check if product that we want to add is already exist
           if(data.product && data.product.id === id )
           {
@@ -460,7 +459,7 @@ export class CartService {
       if (res.success) {
         let data = this.cartDataServer.data
         let products:any=[];
-        console.log("data", data)
+
         data.forEach((p:any)=>{
           p.product.quantityOrdered = p.numInCart
           products.push(p.product)

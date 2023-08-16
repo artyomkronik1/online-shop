@@ -64,7 +64,6 @@ export class SignupComponent {
       happyday:this.happyday,
     }
     // check if data is no empty
-    console.log(user)
     if(this.username.length==0 || this.password.length==0 || this.email.length==0 || this.phone.length==0 || this.birthday.length==0 ){
       this.toast.error('One or more fields are empty', 'ERROR', {
         timeOut: 1500,

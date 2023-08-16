@@ -25,7 +25,7 @@
       <!-- responsive-nav -->
       <div>
         <!-- NAV -->
-        <ul class="main-nav nav py-3" >
+        <ul class="main-nav nav py-3 navs"  >
           <li [class.active]="category == 'All products'"><a (click)="goToHomePage()"    >{{ 'Home' | translate}}</a></li>
 <!--          <li><a (click)="goToDealsPage()">{{ "Hot Deals" | translate}}</a></li>-->
 <!--          <li><a href="#">        <select class="input-select" style="border: none; margin-top: -10px" [(ngModel)]="category" (input)="changed = true" name="something" (change)="productsByCategory(category)"> >-->
@@ -370,12 +370,19 @@
       <div class="col-md-12" style="margin-left: 0px;">
         <div class="header-search"  >
           <form style="width: 100%;">
-            <input class="input" name="searchProduct"  id="searchProduct"  placeholder= "{{'Search here' | translate}}"  (keyup)="productsByName($event)" style="width: 90%;;" >
-            <button class="search-btn">{{ "Search..." | translate}}</button>
+            <input class="input" name="searchProduct"  id="searchProduct"  placeholder= "{{'Search here' | translate}}"  (keyup)="productsByName($event)"  style="width: 100%; border-radius: 30px ; ">
+<!--            <button class="search-btn" > <p style="color:#D60B52">{{ "Search..." | translate}} </p></button>-->
           </form>
         </div>
-        <div class="section-title" style="display: flex; justify-content:center; width: 100%">
-          <h3 class="title" >{{category | translate}}</h3>
+        <div class="section-title" style="display: flex; justify-content:center; width: 100%; align-items: start">
+          <div class="menu-toggle" *ngIf="mobile">
+            <a (click)="openCloseSideBar()">
+              <i class="fa fa-bars" style="color: #D60B52; font-size: 30px"></i>
+            </a>
+          </div>
+<div style="display:flex; justify-content: center ; width: 100%">
+          <h3 class="title"  style="color:#D60B52; font-weight: bold; border-bottom: 2px solid #D60B52" >{{category | translate}}</h3>
+</div>
         </div>
       </div>
       <!-- /section title -->
@@ -521,7 +528,7 @@
 <!--        </div>-->
 
 <!--      </div>-->
-      <div class="col-md-12" >
+      <div class="col-md-12 items" >
         <div class="row">
 
 
@@ -949,11 +956,6 @@
   }
 
 
-  .card {
-    position: relative;
-    margin: 50px ;
-    border:none;
-  }
 
   redHeart:hover{
     background: red;
@@ -969,15 +971,7 @@
     justify-content: center;
     width: 100%;
   }
- .card-title {
-   display: flex;
-   width: 100%;
-   justify-content: center;
-align-items: baseline;
-   gap: 15px;
-   font-weight: 500;
-   font-size: 1.5rem;
- }
+
 
 
 

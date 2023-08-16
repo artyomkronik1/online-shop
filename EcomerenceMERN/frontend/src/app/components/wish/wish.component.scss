@@ -19,5 +19,17 @@
   -webkit-transition: 0.2s all;
   transition: 0.2s all;
   flex-direction: revert;
-
+  width: 25%
+}
+@media (max-width: 767px) {
+  .wish-page{
+    margin-top: 150px;
+  }
+  .add_wish_list{
+    width: 100%;
+  }
+  .row-mobile{
+    width: 100%;
+    margin: 0;
+  }
 }

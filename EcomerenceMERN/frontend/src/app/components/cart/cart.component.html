@@ -1,5 +1,6 @@
 <div class="container my-5" [dir]="dir" >
 <!--when the cart is empty-->
+  <div class="cart-page">
 <div class="text-center my-5" *ngIf="cartData.data[0].numInCart===0" style="display: flex; flex-direction: column; align-items: center">
   <h4> {{"Your Cart is Empty" | translate}}</h4>
   <button class="btn btn-lg mt-3 add_wish_list" style="width: 25%;" routerLink="/"> <i class="fa fa-shopping-cart"></i> {{ "Go To Shop"| translate}}</button>
@@ -49,7 +50,7 @@
                 </td>
 
                 <td>
-                  <p>
+                  <p style=" font-family: cursive;">
                     {{cartService.CalculateSubTotal(i) | currency:'USD'}}
                   </p>
                 </td>
@@ -60,7 +61,7 @@
             <td></td>
             <td></td>
             <td>{{ 'TOTAL' | translate}}</td>
-            <td>{{cartTotal | currency:'USD'}}</td>
+            <td style=" font-family: cursive;">{{cartTotal | currency:'USD'}}</td>
           </tr>
 
 
@@ -68,12 +69,13 @@
         </table>
       </div>
       <div class="col-md-12 d-flex mb-5">
-        <div class="d-flex justify-content-between flex-sm-column flex-md-row w-100">
-          <a routerLink="/checkout" class="btn btn-danger btn-sm order-1">{{ 'Checkout' | translate}}</a>
-          <a routerLink="/" class="btn btn-success btn-sm order-0">{{ "Continue Shopping" | translate}}</a>
+        <div class="d-flex flex-sm-column flex-md-row w-100 btns">
+          <a routerLink="/checkout" class="btn  btn-sm order-1" style="border-radius: 30px; background: #D60B52; color:white">{{ 'Checkout' | translate}}</a>
+          <a routerLink="/" class="btn btn-success btn-sm order-0" style="border-radius: 30px">{{ "Continue Shopping" | translate}}</a>
         </div>
       </div>
     </div>
   </ng-container>
 <!--  when the cart has items-->
+</div>
 </div>

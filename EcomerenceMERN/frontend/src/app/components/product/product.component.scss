@@ -83,6 +83,9 @@
 
 
   }
+  .product-details{
+  width: max-content;
+  }
   .section{
     width:max-content;
   }
@@ -108,4 +111,84 @@
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
   background-color:#ef233c;
   border-radius: 30px;
+}
+.btns{
+  display: flex; align-items: start; gap: 10px; margin-top: 20px; flex-direction: column
+}
+
+
+
+//mobile
+@media (max-width: 767px) {
+  .product-details{
+    width: 100%;
+  }
+  [dir='rtl'] .l1{
+    display: flex;
+    justify-content: end;
+    gap: 5px;
+  }
+
+  [dir='ltr'] .l1{
+    display: flex;
+    justify-content: start;
+    gap: 5px;
+  }
+  .btns{
+    flex-direction: row;
+  }
+  [dir='rtl'] .btns{
+    justify-content: end;
+  }
+  .add_wish_list{
+    align-items: center;
+  }
+  ::ng-deep .my-custom-dialog-class {
+    .mdc-dialog {
+      border: 4px solid #ef233c;
+      //background-color: #0006;
+      //border: none;
+      //padding: 0;
+      //position: fixed;
+      //top: 50%;
+      //margin: -400px 0 0 -450px;
+      //left: 50%;
+      //border-radius: 12px;
+      //box-shadow: 0 12px 20px #41414140;
+      //z-index:2100;
+      //backdrop-filter:blur(20px);
+      width: 800px;
+      height: 635px;
+
+
+      border-radius: 12px;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      position: fixed;
+      z-index: 110;
+      top: 50%;
+      overflow: visible;
+      transform: translateY(-50%);
+
+
+    }
+#breadcrumb{
+  display: none;
+}
+    .section {
+      width: 100%;
+    }
+
+    .mat-mdc-dialog-content {
+      min-height: 100%;
+      overflow: hidden;
+      background: white;
+      //backdrop-filter:blur(20px);
+      max-height: 100%;
+
+    }
+
+
+  }
 }

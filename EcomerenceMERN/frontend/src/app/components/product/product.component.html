@@ -74,7 +74,7 @@
 
       <!-- Product details -->
       <div class="col-md-5">
-        <div class="product-details" style="width: max-content;">
+        <div class="product-details" >
           <h2 class="product-name">{{product.name}}</h2>
           <div>
             <div class="product-rating">
@@ -84,7 +84,7 @@
               <i class="fa fa-star"></i>
               <i class="fa fa-star-o"></i>
             </div>
-            <a class="review-link" href="#">10 Review(s) | Add your review</a>
+            <a class="review-link">10 Review(s)</a>
           </div>
           <div>
             <h3 class="product-price" style="font-family: cursive">{{product.price | currency:'USD'}}</h3>
@@ -107,17 +107,18 @@
                 <span class="qty-down" (click)="Decrease()">-</span>
               </div>
             </div>
-            <div style="display: flex; align-items: start; gap: 10px; margin-top: 20px; flex-direction: column">
-            <button class="add-to-cart-btn" (click)="addToCart(product?.id)"><i class="fa fa-shopping-cart"></i> <p style="display:flex;align-items: center" *ngIf="!mobile">{{ 'ADD to cart' | translate}}</p></button>
-            <button class="  add_wish_list"  (click)="AddToWishList(product)"><i class="fa fa-heart"></i>  <p  *ngIf="!mobile">{{"ADD to wish list" | translate }}</p></button>
+            <div class="btns">
+            <button *ngIf="!mobile" class="add-to-cart-btn" (click)="addToCart(product?.id)"><i class="fa fa-shopping-cart"></i> <p style="display:flex;align-items: center" *ngIf="!mobile">{{ 'ADD to cart' | translate}}</p></button>
+              <button *ngIf="mobile" class="add_wish_list" (click)="addToCart(product?.id)"><i class="fa fa-shopping-cart"></i> </button>
+              <button class="  add_wish_list"  (click)="AddToWishList(product)"><i class="fa fa-heart"></i>  <p  *ngIf="!mobile">{{"ADD to wish list" | translate }}</p></button>
             </div>
           </div>
 
 
 
-          <ul class="product-links">
+          <ul class="product-links l1">
             <li>{{ "Category:"  | translate}}</li>
-            <li><a href="#">{{product.category | translate}}</a></li>
+            <li><a  style="font-weight: bold; color:#D60B52">{{product.category | translate}}</a></li>
 
           </ul>
 

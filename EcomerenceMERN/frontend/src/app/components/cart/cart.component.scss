@@ -78,7 +78,7 @@ form {
 form #decrease {
   margin-right: -4px;
   border-radius: 8px 0 0 8px;
-  background: red;
+  background: #D60B52;
   color: white;
 }
 
@@ -143,5 +143,31 @@ tbody {
 
     }
 
+  }
+
+}
+.btns{
+  position: fixed;
+  justify-content: start;
+  width: 100%;
+  gap: 10px;
+}
+
+//mobile
+//mobile
+@media (max-width: 767px) {
+  .cart-page{
+    margin-top: 150px;
+  }
+  .row{
+    margin-left: 0px;
+    margin-right: 0px;
+    overflow: auto;
+  }
+  .btns{
+    position: fixed;
+    justify-content: start;
+    width: 100%;
+    gap: 10px;
   }
 }

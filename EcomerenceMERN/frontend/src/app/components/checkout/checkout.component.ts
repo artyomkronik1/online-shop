@@ -49,7 +49,6 @@ export class CheckoutComponent implements OnInit {
     this.cartService.cartTotal$.subscribe(total => this.cartTotal = total);
     this.spinnerType ='ball-clip-rotate-pulse';
     this.length = this.cartData?.total
-    console.log(this.cartData)
   }
 
   openDialogPayment(){

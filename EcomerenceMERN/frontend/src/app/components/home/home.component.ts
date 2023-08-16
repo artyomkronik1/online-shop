@@ -350,6 +350,33 @@ export class HomeComponent {
     }
 
   }
+  openCloseSideBar(){
+    const sideBAR:any = document.getElementById("product-properties")  as HTMLInputElement | null;
+
+    const right:any = document.getElementById("right")  as HTMLInputElement | null;
+    const categories:any=document.getElementById("categories-title") as HTMLInputElement | null;
+    if(this.hide===true) {
+      sideBAR.style.width = "0%";
+      sideBAR.style.opacity = "0";
+      right.style.width ="100%"
+
+
+      // categories.style.fontSize="18px"
+      // categories.style.marginTop="5px"
+      // categories.style.marginRight="25px"
+      this.hide = false;
+    }
+    else if(this.hide===false) {
+      console.log(2, sideBAR)
+      sideBAR.style.width = "30%";
+      sideBAR.style.opacity = "1";
+      right.style.width ="70%"
+      // categories.style.fontSize="24px"
+      // categories.style.marginTop="0px"
+      // categories.style.marginRight="0px"
+      this.hide = true;
+    }
+  }
   selectProduct(id:number)
   {
 

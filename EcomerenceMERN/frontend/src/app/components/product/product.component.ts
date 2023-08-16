@@ -42,7 +42,6 @@ export class ProductComponent  {
     this.translate.use(lang)
   }
   outSide(){
-    console.log('a')
   }
   // closeDialog(){
   //
@@ -64,6 +63,7 @@ export class ProductComponent  {
       this.switchLang('en')
     }
   }
+
   ngOnInit(): void {
     this.dir=  JSON.parse(localStorage.getItem('lan') as any) == 'he' ? "rtl" : "ltr"
     this.productService.getSingleProduct(this.product_id).subscribe((prod:any) => {

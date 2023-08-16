@@ -16,13 +16,13 @@
       <!-- row -->
       <div class="rowHeaders" >
         <!-- LOGO -->
-        <div class="col-md-3" *ngIf="!mobile">
+        <div class="col-md-3" >
       <div style="display:flex; flex-direction: row; justify-content: start; align-items: center">
 <!--          <div class="left" style="display: flex; justify-content: space-between; gap: 5px">-->
 
 
 <!--          </div>-->
-          <div class="header-logo" style="margin-inline-start:22px">
+          <div class="header-logo" >
             <a (click)="goHomePage()" class="logo" >
               <img src="/assets/img/logo.png"  alt="">
             </a>
@@ -60,13 +60,13 @@
 
 
               <li >
-                <div style="display: flex;justify-content: space-between; gap:25px;align-items:center">
-                  <div class="menu-toggle" *ngIf="mobile">
-                    <a (click)="openCloseSideBar()">
-                      <i class="fa fa-bars" style="color: white; font-size: 25px"></i>
+                <div class="btnss" >
+<!--                  <div class="menu-toggle" *ngIf="mobile">-->
+<!--                    <a (click)="openCloseSideBar()">-->
+<!--                      <i class="fa fa-bars" style="color: white; font-size: 25px"></i>-->
 
-                    </a>
-                  </div>
+<!--                    </a>-->
+<!--                  </div>-->
 <!--                  user name-->
               <div class="dropdown user" *ngIf="logged===true">
                 <div  class="userIcon">

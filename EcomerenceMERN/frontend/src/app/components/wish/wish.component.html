@@ -1,13 +1,14 @@
 <div class="container my-5">
   <!--when the cart is empty-->
+  <div class="wish-page">
   <div class="text-center my-5" *ngIf="cartData.length===0" style="display: flex; flex-direction: column; align-items: center">
     <h4> {{ "Your Wish Cart is Empty"| translate}} </h4>
-    <button class="btn btn-lg mt-3 add_wish_list" style="width: 25%;" routerLink="/"> <i class="fa fa-shopping-cart"></i> {{ "Go To Shop"| translate}}</button>
+    <button class="btn btn-lg mt-3 add_wish_list" routerLink="/"> <i class="fa fa-shopping-cart"></i> {{ "Go To Shop"| translate}}</button>
   </div>
 
 
   <ng-container *ngIf="cartData.length!==0">
-    <div class="row">
+    <div class="row row-mobile">
       <div class="col-md-12">
         <table class="table">
           <thead class="table-dark">
@@ -50,11 +51,12 @@
       </div>
       <div class="col-md-12 d-flex mb-5">
         <div class="d-flex justify-content-between flex-sm-column flex-md-row w-100">
-          <a routerLink="/checkout" class="btn btn-danger btn-sm order-1">{{ "Checkout"| translate}}</a>
-          <a routerLink="/" class="btn btn-success btn-sm order-0">{{ "Continue Shopping"| translate}}</a>
+          <a routerLink="/checkout" class="btn btn-danger btn-sm order-1" style="border-radius: 30px">{{ "Checkout"| translate}}</a>
+          <a routerLink="/" class="btn btn-success btn-sm order-0" style="border-radius: 30px">{{ "Continue Shopping"| translate}}</a>
         </div>
       </div>
     </div>
   </ng-container>
   <!--  when the cart has items-->
+</div>
 </div>

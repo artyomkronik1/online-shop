@@ -48,13 +48,33 @@ position: fixed; z-index: 5; width: 100%; top: 0;
   border-radius: 25px;
   color: #FFFFFF
 }
+.header-logo{
+  margin-inline-start:22px
+}
+.btnss{
+  display: flex;justify-content: space-between; gap:25px;align-items:center
+}
 //mobile
 @media (max-width: 767px) {
+  .btnss{
+    display: flex;
+    gap: 5px;
+  }
+  [dir='rtl'] .userIcon{
+    right:-15px;
+    position: relative;
+  }
+  .header-logo {
+  margin-inline-start: -22px;
+  }
   .container{
-    padding-left:7px
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 0;
+   // padding-left:7px
   }
   .header{
-    position: relative;
+    position: fixed;
   }
   .header-ctn{
     justify-content: start;
