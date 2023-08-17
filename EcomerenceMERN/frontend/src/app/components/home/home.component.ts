@@ -30,6 +30,7 @@ export class HomeComponent {
   length:any;
   material:any;
   logged:any;
+
   search:String="";
   signdup:any;
   user:any=null;
@@ -119,7 +120,6 @@ export class HomeComponent {
 
   }
   checkCategory(cat:any){
-    console.log(document.getElementById('category-h'))
   }
   ngDoCheck(){
     // cat
@@ -138,6 +138,9 @@ export class HomeComponent {
   }
 
     ngOnInit():void{
+      if(!JSON.parse(window.localStorage.getItem('category') as any)){
+       window.localStorage.setItem('category', JSON.stringify('All products'))
+      }
       this.category = JSON.parse(localStorage.getItem('category') as any)
       const stickyElement = document.querySelector('.product-properties') as any;
       if(stickyElement){stickyElement.style.position = 'sticky';}
@@ -207,12 +210,14 @@ export class HomeComponent {
       this.logged = JSON.parse(window.localStorage.getItem('logged') as any);
       this.user = JSON.parse(window.localStorage.getItem('user') as any);
      if(this.signdup===true && this.logged===true) {
-       this.productService.getAllProducts().subscribe((prods: any) => {
+
+       this.productService.getProductsByCategory(this.category).subscribe((prods: any) => {
          //store all products
          this.allProducts = prods.products;
          this.products = this.allProducts;
 
-         })
+       })
+
 
 
 
@@ -367,7 +372,6 @@ export class HomeComponent {
       this.hide = false;
     }
     else if(this.hide===false) {
-      console.log(2, sideBAR)
       sideBAR.style.width = "30%";
       sideBAR.style.opacity = "1";
       right.style.width ="70%"

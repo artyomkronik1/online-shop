@@ -8,24 +8,24 @@
     </svg>
   </button>
   <mat-dialog-content>
-<div id="breadcrumb" class="section" [dir]="dir">
-  <!-- container -->
-  <div class="container">
-    <!-- row -->
-    <div class="row">
+<!--<div id="breadcrumb" class="section" [dir]="dir">-->
+<!--  &lt;!&ndash; container &ndash;&gt;-->
+<!--  <div class="container">-->
+<!--    &lt;!&ndash; row &ndash;&gt;-->
+<!--    <div class="row">-->
 
-<!--      <div class="col-md-12">-->
-<!--        <ul class="breadcrumb-tree">-->
-<!--          <li><a href="#">{{ 'Home'  | translate}}</a></li>-->
-<!--          <li><a href="#">{{product.category | translate}}</a></li>-->
-<!--          <li class="active">{{product.name}}</li>-->
-<!--        </ul>-->
-<!--      </div>-->
-    </div>
-    <!-- /row -->
-  </div>
-  <!-- /container -->
-</div>
+<!--&lt;!&ndash;      <div class="col-md-12">&ndash;&gt;-->
+<!--&lt;!&ndash;        <ul class="breadcrumb-tree">&ndash;&gt;-->
+<!--&lt;!&ndash;          <li><a href="#">{{ 'Home'  | translate}}</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;          <li><a href="#">{{product.category | translate}}</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;          <li class="active">{{product.name}}</li>&ndash;&gt;-->
+<!--&lt;!&ndash;        </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;      </div>&ndash;&gt;-->
+<!--    </div>-->
+<!--    &lt;!&ndash; /row &ndash;&gt;-->
+<!--  </div>-->
+<!--  &lt;!&ndash; /container &ndash;&gt;-->
+<!--</div>-->
 <!-- /BREADCRUMB -->
 
 <!-- SECTION -->
@@ -37,7 +37,7 @@
       <!-- Product main img -->
       <div class="col-md-5 col-md-push-2">
         <div id="product-main-img">
-          <img [src]="product.image" alt="{{product.name}}"/>
+          <img [src]="product?.image" alt="{{product?.name}}"/>
 <!--          <ng-template [ngIf]="thumbImages.length === 0">-->
 <!--            <div class="product-preview">-->
 <!--              <img [src]="product.image" alt="{{product.name}}">-->
@@ -75,7 +75,7 @@
       <!-- Product details -->
       <div class="col-md-5">
         <div class="product-details" >
-          <h2 class="product-name">{{product.name}}</h2>
+          <h2 class="product-name">{{product?.name}}</h2>
           <div>
             <div class="product-rating">
               <i class="fa fa-star"></i>
@@ -87,11 +87,11 @@
             <a class="review-link">10 Review(s)</a>
           </div>
           <div>
-            <h3 class="product-price" style="font-family: cursive">{{product.price | currency:'USD'}}</h3>
+            <h3 class="product-price" style="font-family: cursive">{{product?.price | currency:'USD'}}</h3>
             <span class="product-available">{{ "In Stock" | translate}}</span>
           </div>
           <p>
-            {{product.description}}
+            {{product?.description}}
           </p>
 
           <div class="add-to-cart">
@@ -118,7 +118,7 @@
 
           <ul class="product-links l1">
             <li>{{ "Category:"  | translate}}</li>
-            <li><a  style="font-weight: bold; color:#D60B52">{{product.category | translate}}</a></li>
+            <li><a  style="font-weight: bold; color:#D60B52">{{product?.category | translate}}</a></li>
 
           </ul>
 

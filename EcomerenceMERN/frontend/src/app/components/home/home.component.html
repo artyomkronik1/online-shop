@@ -126,7 +126,7 @@
 
           <div style="display: flex; flex-direction: column">
             <span style="font-weight: bold; display: flex; justify-content: start; font-size: 18px; color:#D60B52 ">{{ "Category" | translate}}</span>
-            <div style="display:flex; flex-wrap: wrap ; justify-content: start;">
+            <div style="display:flex; flex-wrap: wrap ; justify-content: start;" class="property-group">
 
               <div class="form-check form-check-inline">
 
@@ -147,7 +147,7 @@
           </div>
           <div style="display: flex; flex-direction: column">
             <span style="font-weight: bold; display: flex; justify-content: start; font-size: 18px; color:#D60B52 ">{{'Size' | translate}}</span>
-            <div style="display:flex; flex-wrap: wrap;justify-content: start;">
+            <div style="display:flex; flex-wrap: wrap;justify-content: start;" class="property-group">
 
               <div class="form-check form-check-inline">
                 <input class="form-check-input form-check-inline__property" type="radio" name="inlineRadioOptions2" id="inlineRadio3" value="XS" (change)="filterProduct('xs', 'size')"   [(ngModel)]="size" [ngModelOptions]="{standalone: true}">
@@ -174,7 +174,7 @@
           </div>
           <div style="display: flex; flex-direction: column">
             <span style="font-weight: bold; display: flex; justify-content: start; font-size: 18px; color:#D60B52 ">{{'Color' | translate}}</span>
-            <div style="display:flex; flex-wrap: wrap;justify-content: start; row-gap: 5px">
+            <div style="display:flex; flex-wrap: wrap;justify-content: start; row-gap: 5px" class="property-group">
 
               <div class="form-check form-check-inline">
                 <button class="color-button btn1" (click)="filterProduct('red', 'color')">
@@ -210,7 +210,7 @@
           </div>
           <div style="display: flex; flex-direction: column">
             <span style="font-weight: bold; display: flex; justify-content: start; font-size: 18px; color:#D60B52 ">{{ "Length" | translate}}</span>
-            <div style="display:flex; flex-wrap: wrap;justify-content: start;">
+            <div style="display:flex; flex-wrap: wrap;justify-content: start;" class="property-group">
 
               <div class="form-check form-check-inline">
                 <input class="form-check-input form-check-inline__property" type="radio" name="inlineRadioOptions3" id="inlineRadio9" value="Long" (change)="filterProduct('long', 'length')" [(ngModel)]="length" [ngModelOptions]="{standalone: true}">
@@ -234,7 +234,7 @@
 
           <div style="display: flex; flex-direction: column">
             <span style="font-weight: bold; display: flex; justify-content: start; font-size: 18px; color:#D60B52 ">{{ "Material" | translate}}</span>
-            <div style="display:flex; flex-wrap: wrap;justify-content: start;">
+            <div style="display:flex; flex-wrap: wrap;justify-content: start;" class="property-group">
 
               <div class="form-check form-check-inline">
                 <input class="form-check-input form-check-inline__property" type="radio" name="inlineRadioOptions4" id="inlineRadio13" (change)="filterProduct('aluminium', 'material')" value="Aluminium" [(ngModel)]="material" [ngModelOptions]="{standalone: true}">
@@ -818,11 +818,11 @@
     <div class="row">
       <div class="col-md-12">
         <div class="newsletter">
-          <p>Sign Up for the <strong>NEWSLETTER</strong></p>
+          <p> {{"Sign Up for the" | translate}} <strong>{{"NEWSLETTER" | translate}}</strong></p>
           <form>
-            <input class="input" type="email" placeholder="Enter Your Email">
+            <input class="input" type="email" placeholder="{{'Enter Your Email' | translate}}">
 
-            <button class="newsletter-btn" >      <a routerLink="/thankyou"><i class="fa fa-envelope"></i> Subscribe</a></button>
+            <button class="newsletter-btn" >      <a style="color: white" routerLink="/thankyou"><i class="fa fa-envelope"></i> {{"Subscribe" | translate}}</a></button>
 
           </form>
           <ul class="newsletter-follow">

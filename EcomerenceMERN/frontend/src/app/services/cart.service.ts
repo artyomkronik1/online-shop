@@ -291,7 +291,7 @@ export class CartService {
        // this.CalculateTotal();
         this.cartDataClient.prodData[0].incart = 1;
         this.cartDataClient.prodData[0].id = prod.id;
-        this.cartDataClient.total = this.cartDataServer.total;
+        this.cartDataClient.total = prod.price
         localStorage.setItem('cart', JSON.stringify(this.cartDataClient));
         this.cartData$.next({...this.cartDataServer});
         this.toast.success(`${prod.name} added to the cart`, 'Product Added', {
@@ -302,9 +302,6 @@ export class CartService {
         });
 
       } else {
-
-
-
         const index =  prod.id;
         let prodAlreadyExist = false;
         this.cartDataServer.data.forEach((data:any)=>{
@@ -360,12 +357,10 @@ export class CartService {
             numInCart: 1,
             product: prod
           });
-
           this.cartDataClient.prodData.push({
             incart: 1,
             id: prod.id
           });
-
           this.toast.success(`${prod.name} added to the cart`, 'Product Added', {
             timeOut: 1500,
             progressBar: true,

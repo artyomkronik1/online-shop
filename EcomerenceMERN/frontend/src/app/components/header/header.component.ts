@@ -148,7 +148,7 @@ goToWishListPage()
     if(JSON.parse(localStorage.getItem('lan') as any) === null) {
       localStorage.setItem('lan', JSON.stringify('en'))
     }
-    this.category = JSON.parse(localStorage.getItem('category') as any)
+    this.category = JSON.parse(localStorage.getItem('category') as any) ?  JSON.parse(localStorage.getItem('category') as any) : 'All products'
     this.lan = JSON.parse(window.localStorage.getItem('lan') as any);
     this.signdup = JSON.parse(window.localStorage.getItem('signedup') as any);
     this.logged = JSON.parse(window.localStorage.getItem('logged') as any);
@@ -175,6 +175,8 @@ goToWishListPage()
         }
       })
       this.cartData.wishList = wishes
+
+
 
       this.productService.getAllProducts().subscribe((prods: any) => {
         if (prods && prods.products) {
@@ -210,7 +212,6 @@ goToWishListPage()
         }
       });
     }
-
   }
 
   protected readonly mobile = mobile;

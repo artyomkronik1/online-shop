@@ -2,7 +2,7 @@
   display: none;
 }
 
-.user:hover .user-display {
+[dir="rtl"] .user:hover .user-display {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -17,6 +17,24 @@
   box-shadow: 0px 0px 0px 2px #E4E7ED;
   z-index: 99;
   right: -10px;
+  opacity: 1;
+
+}
+[dir="ltr"] .user:hover .user-display {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 10px;
+  position: absolute;
+  width: 200px;
+  background: #FFF;
+  padding: 15px;
+  border-radius: 25px;
+  border: 2px solid #D60B52;
+  -webkit-box-shadow: 0px 0px 0px 2px #E4E7ED;
+  box-shadow: 0px 0px 0px 2px #E4E7ED;
+  z-index: 99;
+  right: 10px;
   opacity: 1;
 
 }

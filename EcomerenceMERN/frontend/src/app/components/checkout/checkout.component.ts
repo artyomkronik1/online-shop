@@ -48,7 +48,7 @@ export class CheckoutComponent implements OnInit {
     this.cartService.cartData$.subscribe(data => this.cartData = data);
     this.cartService.cartTotal$.subscribe(total => this.cartTotal = total);
     this.spinnerType ='ball-clip-rotate-pulse';
-    this.length = this.cartData?.total
+    this.length = this.cartData?.prodData?.length
   }
 
   openDialogPayment(){
@@ -86,7 +86,7 @@ export class CheckoutComponent implements OnInit {
     let cart =  JSON.parse(localStorage.getItem('cart') as any)
     if(cart)
     {
-     this.length = cart?.total
+     this.length = cart?.prodData?.length
 
 
     }

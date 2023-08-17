@@ -21,3 +21,8 @@
   flex-direction: revert;
 
 }
+@media (max-width: 767px) {
+  .section {
+    margin-top: 150px
+  }
+}
