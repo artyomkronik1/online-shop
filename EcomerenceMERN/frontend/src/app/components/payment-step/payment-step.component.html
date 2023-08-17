@@ -5,7 +5,7 @@
   [type]="spinnerType"
 
 >
-  <p style="font-size: 20px; color: black;">Booking Order...</p>
+  <p style="font-size: 20px; color: black;">{{'Booking Order...' | translate}}</p>
 </ngx-spinner>
 <div class="dialog fade-in-out" [dir]="dir"  >
   <button  mat-icon-button style="float: right; margin:5px" [mat-dialog-close]="closePopup===true">
@@ -62,7 +62,7 @@
                       </label> <input type="text" placeholder="CVV" maxlength="3" required class="form-control" [(ngModel)]="cvv" [ngModelOptions]="{standalone: true}"> </div>
                     </div>
                   </div>
-                  <div class="card-footer" style="padding-right: 300px; padding-left: 300px"> <button type="button" (click)="makePayment()" class="btn btn-outline-danger btn-sm my-2 order-submit" style="width: 100%; border-radius: 25px" > {{'Confirm Payment' | translate}} </button>
+                  <div class="card-footer payment-footer"> <button type="button" (click)="makePayment()" class="btn btn-outline-danger btn-sm my-2 order-submit" style="width: 100%; border-radius: 25px" > {{'Confirm Payment' | translate}} </button>
 
 
                   </div>

@@ -82,3 +82,16 @@
   background-color:#ef233c;
   border-radius: 30px;
 }
+.payment-footer{
+  padding-right: 300px; padding-left: 300px
+}
+//mobile
+@media (max-width: 767px) {
+  .payment-footer{
+    padding:0;
+  }
+  .dialog{
+    display: flex;
+    flex-direction: column;
+  }
+}

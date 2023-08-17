@@ -1,19 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import {OrderService} from '../../services/order.service';
 import {Router} from '@angular/router';
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-thankyou',
   templateUrl: './thankyou.component.html',
   styleUrls: ['./thankyou.component.scss']
 })
-export class ThankyouComponent implements OnInit {
+export class ThankyouComponent  {
   message: any;
   orderId: any;
   products: any[] = [];
   cartTotal: any;
-  constructor(private router: Router,
+  dir:any="";
+  constructor(private router: Router, public translate:TranslateService,
               private orderService: OrderService) {
+    translate.addLangs(['en', 'he']);
+
+    if(this.dir=="rtl"){
+      translate.setDefaultLang('he')
+    }
+    else{
+      translate.setDefaultLang('en')
+    }
     const navigation = this.router.getCurrentNavigation();
     if(navigation) {
       const state = navigation.extras.state as {
@@ -39,8 +49,19 @@ export class ThankyouComponent implements OnInit {
     }
 
   }
-
-  ngOnInit(): void {
+  switchLang(lang:string)
+  {
+    this.translate.use(lang)
+  }
+  ngDoCheck(){
+    // lagm
+    this.dir=  JSON.parse(localStorage.getItem('lan') as any) == 'he' ? "rtl" : "ltr"
+    if(this.dir=="rtl"){
+      this.switchLang('he')
+    }
+    else{
+      this.switchLang('en')
+    }
   }
 
 }
