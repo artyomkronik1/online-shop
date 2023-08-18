@@ -374,6 +374,9 @@ padding: 10px 14px;
 }
 .section{display: flex; justify-content: space-between; margin-top: 50px}
 @media (max-width: 767px) {
+  .newsletter-follow{
+    margin-bottom: 20px;
+  }
 
   .property-group{
     justify-content: start;
