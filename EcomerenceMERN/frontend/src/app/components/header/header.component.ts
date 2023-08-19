@@ -8,7 +8,6 @@ import {Router} from "@angular/router";
 import {PaymentStepComponent} from "../payment-step/payment-step.component";
 import {HomeComponent} from "../home/home.component";
 import {mobile} from "../../app.component";
-
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -32,6 +31,40 @@ openPopup:boolean=false;
   category:any =null;
  cartTotal:number = 0;
 
+  get initials() {
+    const spaceIndex = this.user.name.indexOf(" "); // Find the index of the space
+    if (spaceIndex != -1) {
+      const first_name = this.user.name.substring(0, spaceIndex);
+      const last_name = this.user.name.substring(spaceIndex + 1);
+      return first_name[0] + last_name[0];
+    }
+    else{
+      return this.user.name[0]
+    }
+  }
+  getColorByLetter(letter: string): string {
+    const colorOptions = [
+      { letters: ['A', 'B', 'C'], color: '#FF5733' },
+      { letters: ['D', 'E', 'F'], color: '#33FF57' },
+      { letters: ['G', 'H', 'I'], color: '#5733FF' },
+      // Define more color options for other letters
+    ];
+
+    const selectedOption = colorOptions.find(option => option.letters.includes(letter.toUpperCase()));
+    return selectedOption ? selectedOption.color : '#808080'; // Default color
+  }
+  get backgroundColor() :string{
+    let first_name=""
+    const spaceIndex = this.user.name.indexOf(" "); // Find the index of the space
+    if (spaceIndex != -1) {
+       first_name = this.user.name.substring(0, spaceIndex);
+      return this.getColorByLetter(first_name[0]);
+    }
+    else{
+      return this.getColorByLetter(this.user.name[0]);
+    }
+
+  }
  constructor(private renderer: Renderer2, public cartService:CartService, private elementRef: ElementRef, private productService:ProductService, private matDialog:MatDialog, private router:Router,) {
  }
   ngDoCheck(){
@@ -155,16 +188,7 @@ goToWishListPage()
     this.logged = JSON.parse(window.localStorage.getItem('logged') as any);
     this.user = JSON.parse(window.localStorage.getItem('user') as any);
     if(this.user) {
-      const spaceIndex = this.user.name.indexOf(" "); // Find the index of the space
 
-      if(spaceIndex!=-1) {
-        const first_name = this.user.name.substring(0, spaceIndex);
-        const last_name = this.user.name.substring(spaceIndex + 1);
-        this.username = first_name[0] + last_name[0]
-      }
-      else{
-        this.username = this.user.name;
-      }
       this.openPopup = false;
       this.cartService.cartTotal$.subscribe(total => this.cartTotal = total);
       this.cartService.cartData$.subscribe(cartData => this.cartData = cartData);
@@ -216,4 +240,5 @@ goToWishListPage()
   }
 
   protected readonly mobile = mobile;
+  protected readonly Math = Math;
 }

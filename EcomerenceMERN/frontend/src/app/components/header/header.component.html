@@ -68,18 +68,7 @@
 <!--                    </a>-->
 <!--                  </div>-->
 <!--                  user name-->
-              <div class="dropdown user" *ngIf="logged===true">
-                <div  class="userIcon">
-                <a  data-toggle="dropdown"  aria-expanded="true"><i class="fa fa-user" style="font-size: 18px; margin-inline-start: 5px  "></i>  </a>
-                <span style="color: #FFFFFF; font-size: 14px">{{username}}</span>
-                </div>
-                <div class="user-display">
-                  <div class="cart-btns" style="display: flex; justify-content: space-around">
-<!--                    <button   (click)="openDialog()">{{"Account" | translate}}</button>-->
-                    <button style="display: flex; gap: 5px; align-items: center" (click)="goLogout()" ><i class="fa fa-arrow-circle-right" style="color: #FFFFFF;"></i>{{"Logout" | translate}} </button>
-                  </div>
-                </div>
-              </div>
+
 
                     <div class="header-ctn" style="margin-top: 3px" *ngIf="logged===true">
                       <!-- Wishlist -->
@@ -144,10 +133,25 @@
                       <!-- /Menu Toogle -->
                     </div>
 
+                  <div class="dropdown user" *ngIf="logged===true">
+                    <div class="user-icon" >
+                      <span *ngIf="!mobile" style="color:white; font-weight: bold; font-size: 15px ">{{user.name}}</span>
+                      <div class="avatar" [style.background-color]="backgroundColor">
+                        <span class="initials">{{ initials }}</span>
+                      </div>
+<!--                      <span *ngIf="mobile" style="color:white; font-weight: bold; font-size: 15px ">{{user.name}}</span>-->
 
+                    </div>
+                    <div class="user-display">
+                      <div class="cart-btns" style="display: flex; justify-content: space-around">
+                        <!--                    <button   (click)="openDialog()">{{"Account" | translate}}</button>-->
+                        <button style="display: flex; gap: 5px; align-items: center" (click)="goLogout()" ><i class="fa fa-arrow-circle-right" style="color: #FFFFFF;"></i>{{"Logout" | translate}} </button>
+                      </div>
+                    </div>
+                  </div>
                   <div class="languages">
-                  <img *ngIf="lan==='he'" (click)="changeLanguage('en')" style="height:30px; border-radius: 45%" alt="‪Eng Language Icon - El Camino Academy‬‏" id="dimg_11" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIIAAACCCAMAAAC93eDPAAAAq1BMVEX////aHysoNHfXAADZABjyu771zM3zyMr33N0AGGy/wdIAFWsIHm6ws8gAG23YAA7urbAjMHUSI3DaGSYdK3MWJnH87/DZESDu7/T21tfo6e/3+PrMztvpkJMAAGbd3ud1e6H65+ikqMDoiI1/hKfU1uGOkrFMVIneRUwACWngVlzfTVTjaG3to6dscpxiaZVDTIRYYJDcN0DldXrmfoI1QH2YnLjrmp3bKzS72+K/AAAIJ0lEQVR4nO2b2WKqMBCGFbBWFjEYRAURqeK+F/X9n+yAYUnYF23PRf+rVkP4TCaTMDM0Gn+qI3U2ard6+/t932u1RzP15wnatCtRZBhRfP758VN3HmuGhhCYJiEGIWhzbfzW+5tHm9fZLARWl+yj8C4K4SB1IaA62QgcBWBXPrCvv//U4jqQcpWL4Ap2OGv6UgDtCCXKUyEERxI8LF4GsDjwkKLKIjhDwb8IYnzoYABlENz5MOpbpmqtCYByCA7E+lbTabEnnqLqIFAUf9JqAKjzDoj2WBqBAt155YHQKCnWXwUEZ3HYFQfiJsWHoBoCBeRbBYCh0UnqrBqCc5VRejKGy5gd1kKg+POwHMGChyldVUWgoFTKT2nJZlALgQJSCaNkYTpBdQRnCy3MwGaMQR0ECvAF93Atq5daCBTgCo3DQs4ag3oIjj0UOEWM7WyCeggUsHO3zqGduhpfgkDBU56PGs7lHIaaCJR8zJ2JxTlzQdRGoDpmLkODtbm3+AVfepFlISRu069BkLtWod1iaKVC1EOAspG1LAlTnRrdZLus5Zr4pRa/FUYgXmf4/4vjOskkauwRXVt4NppdxWSEL1FhJgP8E3b5irOjL4kynz9+MGEUcZJE8On2KV56+Bipph0ziYoIMpg//aLau4hu81kMoNHYKW5PfXrVxj8d3uo9R/hzsD4iK2yv6P6z+TVOEHTZpzcj/ItxxC4rIADujE5Mow0CcMe73YhqKwa9KUrULrugBgLgT+iS2VVRgvbiJobwsWH6YX/9O2mXdui0yyLIFHqkG9z74SV9ZpMUGGo/6BBCfPSIL01JqoQAdc8X7h/hMPfpR3wakJCxes3EC9FMtaBcGgHwB3Q8aF9E7Oddeo24LH/JEoO1I+xyajz38eIIgD8jXzjaEZNMOh9PQ4pbop4/d9hsKOIX0Vo7dQvEmnxJAPnCwTcdWmGfvn4mzoDAOSt3GVs4Tsf0nWjI2h2uGILEo2OBeqexgY0seExn194hf0Duo7Wlsa6bhL9smLBQuAuiB3q1h8+suG0RYy+Ef0+Bv36Q+Q56TfzCDWGX43EuApC8H9PeYlbo/Bh8WlXBlsN92ww2Aony5u+LmL9d3KNnxB05L65C2hUdsaslB/hwGE6h8wNd4LsyDEKhr1GIVIROsCMTHXwTANOlezaEy2BOusRalvyllOUvUxH4JF8oRrYd/5je9c2MjYQSnMMVmu/WhcEdCmFLKQhTNL2Ek2MexJXqLTgUBs+Ycznq1yF389yqgrvV1UcuwlMfK9zVK3ti+AQq/MWy5X14SjifSSA44uADGvrLdITRBl8GyoRY0+wJf0oBnjGMdT5BXd1mnxfPdowYiKa/Z9kIjhXSYXuFXEuLs84Rd9HRYA/ZFPlphY8WrnY2QptoTPrChDvVCc1m2cIP6Q/hD8HXxwsRZq1KmigkgjKp1o+78/ToSooMgnvAqiR3++iJ0c5+UqJ7mL7/KgLjnk2/YkP6owhffwj/D8Ivm+Pk1xHE/e/7Bdc1tej8hm9EcA9hH787Cu7R7vN3V4T7qD97/CJB/+KesAfbfn7TtyFsn4+Jm0qbbMyCxErd7NCZ5bOKetEjS69SN0lx4KL6D86Ofwh/CG9CEEiZAvnI3eph2uc93O/x1l7jqZCssJbA0Luh1jqZxhttRDzEMckLcUzwEIcXbVW1k851Y9LnwV20MNgUZHA8za4pscP0iYjGnBEza8eTJXKYtlX9aFOQwQl6E9OCj1m2MCNj6V7IUYim2gCexLfQl9KJCLwM9g8iduhVty5yEZxviZDXY/+EUC2KiO1JeL3V1A1+yvyNSCa38NAdw6DY4XCeXfsaXq3gAfgVunpq4Pk+sqLjCGGkGC4xdqjeODk7H4HpTkBs0feLc1AVAA9EczayDD53DGYEXmZEFdyBLIzQGHzhnTA7lAthlx7EOlJDwJLX9jGb9vND7PKZK8xGWJALOikjpJpPkwCnGHMoMpl28YLLx2IVwLpFzCeZ9mui+RxaOqSk9GKOVhMzZtqLfY/ngR3l5aYkySQgyLRf07Nqg6PSAMiMaTNhNeWXYksnclrveI7Hz5FqKYVesyvuihgv3iyc8IRFgQwd6BwXZLeEcX+nn9YGEzIbhCxYO5HFNcWqwbkDUUJF5IgYMTFT6ahFhP29nBiZMi+M4JY3klUz7S0B0WokaRQ+XPop3eEcxtIlxVOlNmGXau8SXkIn50sb30wwUOhaEyaU9ZRIGPspYE+DiehdJH4lEzTUiztUwY5swsTy11Jpcz8F7EOg3KOySiFwpoJxfaHvR1PqzEoWD0gxz99vKmlZY0d3v5Jlekitvy1dQgEi/nIVyYNHFOzI6eV+5WtZeCgk3CRL6k2KLYNaCBTgbSHrjlEANl7KVBfBhTgWr4Jm9fcUnkLeKFwObupvQXDsUr8VhbC6qb3UQnBLE4q+IGBkGkOdYkPeKIjQMLL6qYHAzbPuSspavwNhXeo9jRufui6qIgC+QOUvLjO1ErkiApDLeKentLSS7GoIsPiLCaHSXlWphFD6NRUk1UqcjCp7RFAwUlps/NhWBUEGNd6uVI14aXpZBFDhfSVC2rLiCToAWNZ5he4p9Qbk6ggyMF/x9vPY4uRqCPK6WAV+AQ3ngC9dfgt4ynrl+9/j28k/zxZDgPzp9upXnVX2LEn5IY4nApSkc62KpVSNzTPXgTmFp2vY6ZzNN75xPhQMOxvBNoRXmWA6BRrhNs0witJ/SlEYhkbPQOrb7x9q0Nrfv3eb7Wq13ey+7/tWSsggX/8AiZHcVSaove8AAAAASUVORK5CYII=" data-atf="1" data-frt="0">
-                  <img *ngIf="lan==='en'" (click)="changeLanguage('he')" style="height:30px" src="https://cdn.countryflags.com/thumbs/israel/flag-button-round-250.png"/>
+                  <img *ngIf="lan==='he'" (click)="changeLanguage('en')" class="lan-btn"  alt="‪Eng Language Icon - El Camino Academy‬‏" id="dimg_11" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIIAAACCCAMAAAC93eDPAAAAq1BMVEX////aHysoNHfXAADZABjyu771zM3zyMr33N0AGGy/wdIAFWsIHm6ws8gAG23YAA7urbAjMHUSI3DaGSYdK3MWJnH87/DZESDu7/T21tfo6e/3+PrMztvpkJMAAGbd3ud1e6H65+ikqMDoiI1/hKfU1uGOkrFMVIneRUwACWngVlzfTVTjaG3to6dscpxiaZVDTIRYYJDcN0DldXrmfoI1QH2YnLjrmp3bKzS72+K/AAAIJ0lEQVR4nO2b2WKqMBCGFbBWFjEYRAURqeK+F/X9n+yAYUnYF23PRf+rVkP4TCaTMDM0Gn+qI3U2ard6+/t932u1RzP15wnatCtRZBhRfP758VN3HmuGhhCYJiEGIWhzbfzW+5tHm9fZLARWl+yj8C4K4SB1IaA62QgcBWBXPrCvv//U4jqQcpWL4Ap2OGv6UgDtCCXKUyEERxI8LF4GsDjwkKLKIjhDwb8IYnzoYABlENz5MOpbpmqtCYByCA7E+lbTabEnnqLqIFAUf9JqAKjzDoj2WBqBAt155YHQKCnWXwUEZ3HYFQfiJsWHoBoCBeRbBYCh0UnqrBqCc5VRejKGy5gd1kKg+POwHMGChyldVUWgoFTKT2nJZlALgQJSCaNkYTpBdQRnCy3MwGaMQR0ECvAF93Atq5daCBTgCo3DQs4ag3oIjj0UOEWM7WyCeggUsHO3zqGduhpfgkDBU56PGs7lHIaaCJR8zJ2JxTlzQdRGoDpmLkODtbm3+AVfepFlISRu069BkLtWod1iaKVC1EOAspG1LAlTnRrdZLus5Zr4pRa/FUYgXmf4/4vjOskkauwRXVt4NppdxWSEL1FhJgP8E3b5irOjL4kynz9+MGEUcZJE8On2KV56+Bipph0ziYoIMpg//aLau4hu81kMoNHYKW5PfXrVxj8d3uo9R/hzsD4iK2yv6P6z+TVOEHTZpzcj/ItxxC4rIADujE5Mow0CcMe73YhqKwa9KUrULrugBgLgT+iS2VVRgvbiJobwsWH6YX/9O2mXdui0yyLIFHqkG9z74SV9ZpMUGGo/6BBCfPSIL01JqoQAdc8X7h/hMPfpR3wakJCxes3EC9FMtaBcGgHwB3Q8aF9E7Oddeo24LH/JEoO1I+xyajz38eIIgD8jXzjaEZNMOh9PQ4pbop4/d9hsKOIX0Vo7dQvEmnxJAPnCwTcdWmGfvn4mzoDAOSt3GVs4Tsf0nWjI2h2uGILEo2OBeqexgY0seExn194hf0Duo7Wlsa6bhL9smLBQuAuiB3q1h8+suG0RYy+Ef0+Bv36Q+Q56TfzCDWGX43EuApC8H9PeYlbo/Bh8WlXBlsN92ww2Aony5u+LmL9d3KNnxB05L65C2hUdsaslB/hwGE6h8wNd4LsyDEKhr1GIVIROsCMTHXwTANOlezaEy2BOusRalvyllOUvUxH4JF8oRrYd/5je9c2MjYQSnMMVmu/WhcEdCmFLKQhTNL2Ek2MexJXqLTgUBs+Ycznq1yF389yqgrvV1UcuwlMfK9zVK3ti+AQq/MWy5X14SjifSSA44uADGvrLdITRBl8GyoRY0+wJf0oBnjGMdT5BXd1mnxfPdowYiKa/Z9kIjhXSYXuFXEuLs84Rd9HRYA/ZFPlphY8WrnY2QptoTPrChDvVCc1m2cIP6Q/hD8HXxwsRZq1KmigkgjKp1o+78/ToSooMgnvAqiR3++iJ0c5+UqJ7mL7/KgLjnk2/YkP6owhffwj/D8Ivm+Pk1xHE/e/7Bdc1tej8hm9EcA9hH787Cu7R7vN3V4T7qD97/CJB/+KesAfbfn7TtyFsn4+Jm0qbbMyCxErd7NCZ5bOKetEjS69SN0lx4KL6D86Ofwh/CG9CEEiZAvnI3eph2uc93O/x1l7jqZCssJbA0Luh1jqZxhttRDzEMckLcUzwEIcXbVW1k851Y9LnwV20MNgUZHA8za4pscP0iYjGnBEza8eTJXKYtlX9aFOQwQl6E9OCj1m2MCNj6V7IUYim2gCexLfQl9KJCLwM9g8iduhVty5yEZxviZDXY/+EUC2KiO1JeL3V1A1+yvyNSCa38NAdw6DY4XCeXfsaXq3gAfgVunpq4Pk+sqLjCGGkGC4xdqjeODk7H4HpTkBs0feLc1AVAA9EczayDD53DGYEXmZEFdyBLIzQGHzhnTA7lAthlx7EOlJDwJLX9jGb9vND7PKZK8xGWJALOikjpJpPkwCnGHMoMpl28YLLx2IVwLpFzCeZ9mui+RxaOqSk9GKOVhMzZtqLfY/ngR3l5aYkySQgyLRf07Nqg6PSAMiMaTNhNeWXYksnclrveI7Hz5FqKYVesyvuihgv3iyc8IRFgQwd6BwXZLeEcX+nn9YGEzIbhCxYO5HFNcWqwbkDUUJF5IgYMTFT6ahFhP29nBiZMi+M4JY3klUz7S0B0WokaRQ+XPop3eEcxtIlxVOlNmGXau8SXkIn50sb30wwUOhaEyaU9ZRIGPspYE+DiehdJH4lEzTUiztUwY5swsTy11Jpcz8F7EOg3KOySiFwpoJxfaHvR1PqzEoWD0gxz99vKmlZY0d3v5Jlekitvy1dQgEi/nIVyYNHFOzI6eV+5WtZeCgk3CRL6k2KLYNaCBTgbSHrjlEANl7KVBfBhTgWr4Jm9fcUnkLeKFwObupvQXDsUr8VhbC6qb3UQnBLE4q+IGBkGkOdYkPeKIjQMLL6qYHAzbPuSspavwNhXeo9jRufui6qIgC+QOUvLjO1ErkiApDLeKentLSS7GoIsPiLCaHSXlWphFD6NRUk1UqcjCp7RFAwUlps/NhWBUEGNd6uVI14aXpZBFDhfSVC2rLiCToAWNZ5he4p9Qbk6ggyMF/x9vPY4uRqCPK6WAV+AQ3ngC9dfgt4ynrl+9/j28k/zxZDgPzp9upXnVX2LEn5IY4nApSkc62KpVSNzTPXgTmFp2vY6ZzNN75xPhQMOxvBNoRXmWA6BRrhNs0witJ/SlEYhkbPQOrb7x9q0Nrfv3eb7Wq13ey+7/tWSsggX/8AiZHcVSaove8AAAAASUVORK5CYII=" data-atf="1" data-frt="0">
+                  <img *ngIf="lan==='en'" (click)="changeLanguage('he')" class="lan-btn"  src="https://cdn.countryflags.com/thumbs/israel/flag-button-round-250.png"/>
                 </div>
                 </div>
               </li>

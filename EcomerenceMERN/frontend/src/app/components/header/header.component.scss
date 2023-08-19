@@ -2,13 +2,28 @@
   display: none;
 }
 
+
+.avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height:50px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+}
+.user-icon{
+  display: flex; justify-content: center;align-items: center; gap: 7px
+}
 [dir="rtl"] .user:hover .user-display {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   gap: 10px;
   position: absolute;
-  width: 100px;
+  width: 150px;
   background: #FFF;
   padding: 15px;
   border-radius: 25px;
@@ -26,7 +41,7 @@
   justify-content: space-around;
   gap: 10px;
   position: absolute;
-  width: 100px;
+  width: 150px;
   background: #FFF;
   padding: 15px;
   border-radius: 25px;
@@ -72,8 +87,22 @@ position: fixed; z-index: 5; width: 100%; top: 0;
 .btnss{
   display: flex;justify-content: space-between; gap:25px;align-items:center
 }
+.lan-btn{
+height:45px; border-radius: 45%
+}
 //mobile
 @media (max-width: 767px) {
+  .avatar{
+    height: 40px;
+    width: 40px;
+    font-size: 18px;
+  }
+  .lan-btn{
+    height:40px; border-radius: 45%
+  }
+  .user-icon{
+    display: flex; justify-content: center;align-items: center; flex-direction: column;
+  }
   .btnss{
     display: flex;
     gap: 5px;
@@ -85,11 +114,13 @@ position: fixed; z-index: 5; width: 100%; top: 0;
 
   .header-logo {
   margin-inline-start: -22px;
+
   }
   .container{
     padding-left: 10px;
+    margin-right: -22px;
     padding-right: 10px;
-    margin: 0;
+    margin-left: 0px;
    // padding-left:7px
   }
   .header{
@@ -100,8 +131,13 @@ position: fixed; z-index: 5; width: 100%; top: 0;
     width: 100%;
     display: flex;
   }
+
   .top-header{
+    margin-right: 25px  ;
     width: 100%;
+  }
+  .languages{
+    margin-inline-start: 8px;
   }
   .header-links{
     justify-content: end;

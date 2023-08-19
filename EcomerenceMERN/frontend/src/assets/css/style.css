@@ -506,6 +506,10 @@ textarea.input {
   float: right;
   padding: 15px 0px;
 }
+[dir='rtl'] .header-ctn{
+  position: relative;
+  left: -25px;
+}
 
 .header-ctn>div {
   display: inline-block;
@@ -692,6 +696,9 @@ textarea.input {
 \*----------------------------*/
 /*mobile*/
 @media only screen and (max-width: 991px) {
+  #header{
+    overflow-y: hidden;
+  }
   .header-ctn>div+div {
     margin-left: -10px;
   }
