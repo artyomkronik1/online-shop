@@ -105,6 +105,8 @@
 .form-check-input:checked + .form-check-label {
   color: #ef233c;
 }
+
+
 //hovered
 .form-check-inline:hover + .form-check-input{
   accent-color: #ef233c;
@@ -374,6 +376,9 @@ padding: 10px 14px;
 }
 .section{display: flex; justify-content: space-between; margin-top: 50px}
 @media (max-width: 767px) {
+  .form-check-inline:visited + .form-check-label{
+    color:#D60B52 ;
+  }
   .newsletter-follow{
     margin-bottom: 20px;
   }

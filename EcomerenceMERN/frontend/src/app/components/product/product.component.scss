@@ -1,4 +1,7 @@
-
+.container{
+  max-width: 100%;
+  bottom: -40px;
+}
 .add_wish_list:hover{
   background-color:#D60B52;
   color:#FFF
@@ -87,7 +90,7 @@
   width: max-content;
   }
   .section{
-    width:max-content;
+   // width:max-content;
   }
   .mat-mdc-dialog-content{
     min-height: 100%;
@@ -99,6 +102,10 @@
   }
 
 
+}
+.row{
+  justify-content: space-around;
+  align-items: center;
 }
 .filter-btn{
   background: #ef233c ;border-radius: 30px; border: none; align-items: center;

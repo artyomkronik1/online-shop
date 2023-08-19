@@ -22,10 +22,10 @@
             <h3 class="title">{{ "Billing address"  | translate}}</h3>
           </div>
           <div class="form-group">
-            <input class="input" type="text" name="first-name" placeholder="{{'First Name' | translate}}">
+            <input class="input" type="text"  name="first-name" placeholder="{{'First Name' | translate}}">
           </div>
           <div class="form-group">
-            <input class="input" type="text" name="last-name" placeholder="{{'Last Name' | translate}}">
+            <input class="input" type="text" name="last-name"  placeholder="{{'Last Name' | translate}}">
           </div>
           <div class="form-group">
             <input class="input" type="email" name="email" placeholder="{{'Email' | translate}}">
@@ -119,8 +119,8 @@
           </div>
           <div class="order-products">
             <div class="order-col" *ngFor="let c of cartData.data">
-              <div style="display: flex; justify-content: center" *ngIf="dir=='ltr'">{{c?.numInCart}} x {{c?.product?.name}}</div>
-              <div style="display: flex; justify-content: center" *ngIf="dir=='rtl'"> {{c?.product?.name}} x {{c?.numInCart}}   </div>
+              <div style="display: flex; justify-content: center;text-align: center" *ngIf="dir=='ltr'">{{c.numInCart}} x {{c.product.name}}</div>
+              <div style="display: flex; justify-content: center;text-align: center" *ngIf="dir=='rtl'"> {{c.product?.name}} x {{c.numInCart}}   </div>
               <div style="display: flex; justify-content: center ;font-family: cursive">{{(c?.product?.price * c?.numInCart) | currency:'USD'}}</div>
             </div>
 
@@ -144,7 +144,7 @@
           <input type="checkbox" id="terms">
           <label for="terms">
             <span></span>
-           {{ "I've read and accept the" | translate }} <a href="#"> {{ "terms & conditions"  |translate }}</a>
+           {{ "I've read and accept the" | translate }} <a href="../src/assets/sample.pdf" download> {{ "terms & conditions"  |translate }}</a>
           </label>
         </div>
 
@@ -167,5 +167,5 @@
 
    <div class="text-center my-5" *ngIf="length== 0" style="display:flex; flex-direction: column; align-items: center">
      <h4>{{ "Your Cart Is Empty" | translate}}</h4>
-     <button class="btn btn-lg mt-3 add_wish_list" style="width: 25%;" routerLink="/"> <i class="fa fa-shopping-cart"></i> {{ "Go To Shop"| translate}}</button>
+     <button class="btn btn-lg mt-3 add_wish_list" routerLink="/"> <i class="fa fa-shopping-cart"></i> {{ "Go To Shop"| translate}}</button>
    </div>

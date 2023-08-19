@@ -39,7 +39,8 @@ openPopup:boolean=false;
     let cart =  JSON.parse(localStorage.getItem('cart') as any)
     if(cart)
     {
-      this.cartData.wishList = cart?.wishList ?  cart?.wishList:[]
+      this.cartData = cart
+      this.cartTotal = this.cartData?.total
     }
 
   }
@@ -85,7 +86,7 @@ openPopup:boolean=false;
     document.location.reload()
   }
 goLogout(){
-  let cartDataClient = {total: 0, prodData: [], wishList:[]};
+  let cartDataClient = {total: 0, data: [], wishList:[]};
   localStorage.setItem('cart', JSON.stringify(cartDataClient));
   localStorage.setItem('user', JSON.stringify(null))
   localStorage.setItem('logged', JSON.stringify(false))
@@ -186,7 +187,7 @@ goToWishListPage()
             this.cartData.data[0].product.products = prods.products;
           }
           let cart = JSON.parse(localStorage.getItem('cart') as any);
-          let prodcutsData = cart.prodData
+          let prodcutsData = cart?.data
           //reset all products in our cartData
           // if(prodcutsData.length===0) {
           //   this.cartData.data.forEach((data: any) => {

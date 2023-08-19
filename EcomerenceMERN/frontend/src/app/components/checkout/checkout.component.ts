@@ -19,10 +19,16 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 
 
-export class CheckoutComponent implements OnInit {
+export class CheckoutComponent  {
   length:any;
   cartTotal: any;
-  cartData: any;
+  first_name:string='';
+
+  cartData: any=[{
+    total:0,
+    data:[],
+    wishList:[]
+  }];
   spinnerType:any;
   dir:any;
   constructor(public translate:TranslateService,private matDialog:MatDialog, private cartService: CartService,
@@ -45,10 +51,11 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.dir=  JSON.parse(localStorage.getItem('lan') as any) == 'he' ? "rtl" : "ltr"
-    this.cartService.cartData$.subscribe(data => this.cartData = data);
-    this.cartService.cartTotal$.subscribe(total => this.cartTotal = total);
+    this.cartData = JSON.parse(window.localStorage.getItem('cart') as any)
+    this.cartTotal = this.cartData.total
     this.spinnerType ='ball-clip-rotate-pulse';
-    this.length = this.cartData?.prodData?.length
+    this.length = this.cartData?.data?.length
+
   }
 
   openDialogPayment(){
@@ -72,6 +79,7 @@ export class CheckoutComponent implements OnInit {
   }
   onCheckout() {
     this.spinner.show().then(p => {
+      console.log(this.first_name)
       this.cartService.CheckoutFromCart(2);
     });
   }
@@ -86,7 +94,7 @@ export class CheckoutComponent implements OnInit {
     let cart =  JSON.parse(localStorage.getItem('cart') as any)
     if(cart)
     {
-     this.length = cart?.prodData?.length
+     this.length = cart?.data?.length
 
 
     }

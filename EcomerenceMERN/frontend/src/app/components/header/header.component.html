@@ -88,7 +88,7 @@
 
                           <i class="fa fa-heart-o"></i>
                           <span> {{ 'Your Wishlist' |  translate}}</span>
-                          <div class="qty" > {{cartData.wishList.length}}
+                          <div class="qty" > {{cartData?.wishList?.length}}
 
 
                           </div>
@@ -102,27 +102,29 @@
                         <a class="dropdown-toggle"   data-toggle="dropdown" aria-expanded="true">
                           <i class="fa fa-shopping-cart"></i>
                           <span> {{ 'Your Cart' | translate }}</span>
-                          <div class="qty">{{cartData.data[0].numInCart!==0? cartData.data.length:0}}</div>
+                          <div class="qty">{{cartData?.data[0]?.numInCart!==0? cartData?.data?.length:0}}</div>
                         </a>
 
                         <div class="cart-dropdown">
-                          <div class="cart-list" *ngIf="cartData.data[0].numInCart!==0">
-                            <div class="product-widget" *ngFor="let c of cartData.data; let i=index">
+                          <div class="cart-list" *ngIf="cartData?.data[0]?.numInCart!==0">
+                            <div class="product-widget" *ngFor="let c of cartData?.data; let i=index">
+
                               <div class="product-img">
-                                <img [src]="c.product?.image" alt="{{c.product.name}}" width="200px">
+                                <img [src]="c.product?.image" alt="{{c?.product?.name}}" width="200px">
                               </div>
                               <div class="product-body">
-                                <h3 class="product-name"><a href="#">{{c.product.name}}</a></h3>
+                                <h3 style="  color: #D10024; display:flex; font-size: 14px; flex-wrap: wrap">{{c?.product?.name}}</h3>
 
-                                <h4 class="product-price" *ngIf="lan==='en'" ><span class="qty" style="font-family: cursive; font-weight: bold">{{c.numInCart}} x {{ c.product?.price | currency:'USD'}}</span></h4>
+                                <h4 class="product-price" *ngIf="lan==='en'" ><span class="qty" style="font-family: cursive; font-weight: bold">{{c?.numInCart}} x {{ c.product?.price | currency:'USD'}}</span></h4>
                                 <h4 class="product-price" *ngIf="lan==='he'" ><span class="qty" style="font-family: cursive; font-weight: bold"> x {{ c.product?.price | currency:'USD'}}   {{c.numInCart}} </span></h4>
 
                               </div>
                               <button class="delete" (click)="cartService.DeleteProductFromCart(i)"><i class="fa fa-close"></i></button>
+                              <div style="display:  block; border: 1.5px solid #E4E7ED; width: 100%; margin-top: 35px; margin-bottom: 0px"></div>
                             </div>
                           </div>
                           <div class="cart-summary" >
-                            <small style="display: flex; justify-content: start">{{cartData.data[0].numInCart!==0? cartData.data.length:0}} {{"Item(s) selected" | translate}}</small>
+                            <small style="display: flex; justify-content: start">{{cartData?.data[0]?.numInCart!==0? cartData.data.length:0}} {{"Item(s) selected" | translate}}</small>
                            <div style="display: flex; gap: 5px">
                             <h5>{{'TOTAL:' | translate}} </h5>
                             <h5 style="font-family: cursive" >{{  cartTotal | currency:'USD'}}</h5>

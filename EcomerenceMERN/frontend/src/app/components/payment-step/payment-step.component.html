@@ -18,7 +18,7 @@
     <div >
     <div style="display:flex; justify-content: center;">
       <div >
-        <h3 >{{'Payment Step' | translate}}</h3>
+        <h3 style="color: #D60B52">{{'Payment Step' | translate}}</h3>
       </div>
     </div> <!-- End -->
     <div >
@@ -62,7 +62,7 @@
                       </label> <input type="text" placeholder="CVV" maxlength="3" required class="form-control" [(ngModel)]="cvv" [ngModelOptions]="{standalone: true}"> </div>
                     </div>
                   </div>
-                  <div class="card-footer payment-footer"> <button type="button" (click)="makePayment()" class="btn btn-outline-danger btn-sm my-2 order-submit" style="width: 100%; border-radius: 25px" > {{'Confirm Payment' | translate}} </button>
+                  <div class="card-footer payment-footer"> <button type="button" (click)="makePayment()" class="btn btn-outline-danger btn-sm my-2 order-submit" style="width: 100%; border-radius: 25px" > <span style="font-weight: bold">{{'Confirm Payment' | translate}}</span> </button>
 
 
                   </div>

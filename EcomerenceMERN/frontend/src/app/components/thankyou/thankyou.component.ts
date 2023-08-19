@@ -41,7 +41,7 @@ export class ThankyouComponent  {
         this.cartTotal = 0;
         //quantity of every prodcut * its price
         this.products.forEach((product: any) => {
-          this.cartTotal += product.price * product.quantityOrdered
+          this.cartTotal += product.price * product.quantity
         })
       }
       //this.cartTotal = state.total;

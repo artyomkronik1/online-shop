@@ -37,10 +37,10 @@ export class PaymentStepComponent {
   closePopup:boolean=false;
   dir:any;
   name:string='';
-  cardNumber:number=0;
-  cvv:number=0;
-  month:any=null;
-  year:any=null;
+  cardNumber:string='';
+  cvv:string='';
+  month:string='';
+  year:string='';
   spinnerType:any;
 
   constructor(public translate:TranslateService, private cartService: CartService,private toast: ToastrService,              private spinner: NgxSpinnerService, private dialogRef: MatDialogRef<PaymentStepComponent>) {
@@ -59,14 +59,55 @@ export class PaymentStepComponent {
   }
   onCheckout() {
     this.spinner.show().then(p => {
-      this.cartService.CheckoutFromCart(2);
+      this.cartService.CheckoutFromCart(2, );
     });
   }
   makePayment()
   {
+    // check card number length
     if(this.cardNumber.toString().length!=12)
     {
       this.toast.error(`Invalid card number`, 'ERROR', {
+        timeOut: 1500,
+        progressBar: true,
+        progressAnimation: 'increasing',
+        positionClass: 'toast-top-right'
+      });
+    }
+    // check name  length
+    if(this.name.toString().length==0)
+    {
+      this.toast.error(`Please enter a name`, 'ERROR', {
+        timeOut: 1500,
+        progressBar: true,
+        progressAnimation: 'increasing',
+        positionClass: 'toast-top-right'
+      });
+    }
+    // check month  length
+    if(this.month.toString().length!=2)
+    {
+      this.toast.error(`Invalid month number`, 'ERROR', {
+        timeOut: 1500,
+        progressBar: true,
+        progressAnimation: 'increasing',
+        positionClass: 'toast-top-right'
+      });
+    }
+    // check year  length
+    if(this.year.toString().length!=4)
+    {
+      this.toast.error(`Invalid year number`, 'ERROR', {
+        timeOut: 1500,
+        progressBar: true,
+        progressAnimation: 'increasing',
+        positionClass: 'toast-top-right'
+      });
+    }
+    // check year  length
+    if(this.cvv.toString().length!=3)
+    {
+      this.toast.error(`Invalid CVV number`, 'ERROR', {
         timeOut: 1500,
         progressBar: true,
         progressAnimation: 'increasing',

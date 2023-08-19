@@ -3,6 +3,7 @@
   color:#FFF
 }
 .add_wish_list{
+  width: 25%;
   gap: 10px;
   justify-content: center;
   align-items: baseline;
@@ -21,8 +22,14 @@
   flex-direction: revert;
 
 }
+h3{
+  color:#D60B52
+}
 @media (max-width: 767px) {
   .section {
     margin-top: 150px
+  }
+  .add_wish_list{
+    width: 50%;
   }
 }

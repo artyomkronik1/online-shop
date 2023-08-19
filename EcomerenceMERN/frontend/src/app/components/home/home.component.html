@@ -176,35 +176,42 @@
             <span style="font-weight: bold; display: flex; justify-content: start; font-size: 18px; color:#D60B52 ">{{'Color' | translate}}</span>
             <div style="display:flex; flex-wrap: wrap;justify-content: start; row-gap: 5px" class="property-group">
 
-              <div class="form-check form-check-inline">
+              <div class="form-check form-check-inline btnf" style="display: flex; align-items:center">
                 <button class="color-button btn1" (click)="filterProduct('red', 'color')">
                 </button>
+                <span class="form-check-label btnt" *ngIf="mobile">{{'Red'  |translate}}</span>
               </div>
               <div class="form-check form-check-inline">
                 <button class="color-button btn7" (click)="filterProduct('white', 'color')">
                 </button>
+                <span *ngIf="mobile">{{'White'  |translate}}</span>
               </div>
 
               <div class="form-check form-check-inline">
                 <button class="color-button btn2" (click)="filterProduct('green', 'color')">
                 </button>
+                <span *ngIf="mobile">{{'Green'  |translate}}</span>
               </div>
 
               <div class="form-check form-check-inline">
                 <button class="color-button btn3" (click)="filterProduct('blue', 'color')" >
                 </button>
+                <span *ngIf="mobile">{{'Blue'  |translate}}</span>
               </div>
               <div class="form-check form-check-inline">
                 <button class="color-button btn4" (click)="filterProduct('yellow', 'color')" >
                 </button>
+                <span *ngIf="mobile">{{'Yellow'  |translate}}</span>
               </div>
               <div class="form-check form-check-inline">
                 <button class="color-button btn6" (click)="filterProduct('black', 'color')" >
                 </button>
+                <span *ngIf="mobile">{{'Black'  |translate}}</span>
               </div>
               <div class="form-check form-check-inline">
                 <button class="color-button btn5" (click)="filterProduct('pink', 'color')" >
                 </button>
+                <span *ngIf="mobile">{{'Pink'  |translate}}</span>
               </div>
             </div>
           </div>
@@ -856,19 +863,19 @@
             <div class="row">
               <div class="col-md-3 col-xs-6">
                 <div class="footer">
-                  <h3 class="footer-title">About Us</h3>
-                  <p class="footer-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
+                  <h3 class="footer-title">{{'About Me' | translate}}</h3>
+                  <p class="footer-text">{{'We are an Online-Shop - web application that you can buy here everything'| translate}}</p>
                   <ul>
-                    <li class="footer-text"><a href="#" class="footer-text"><i class="fa fa-map-marker "></i>1734 Stonecoal Road</a></li>
-                    <li class="footer-text"><a href="#" class="footer-text"><i class="fa fa-phone "></i>+021-95-51-84</a></li>
-                    <li class="footer-text"><a href="#" class="footer-text"><i class="fa fa-envelope-o"></i>email@email.com</a></li>
+                    <li class="footer-text"><a  class="footer-text"><i class="fa fa-map-marker "></i>1734 Stonecoal Road</a></li>
+                    <li class="footer-text"><a  class="footer-text"><i class="fa fa-phone "></i>+021-95-51-84</a></li>
+                    <li class="footer-text"><a  class="footer-text"><i class="fa fa-envelope-o"></i>arttemkron@gmail.com</a></li>
                   </ul>
                 </div>
               </div>
 
               <div class="col-md-3 col-xs-6" *ngIf="user">
                 <div class="footer">
-                  <h3 class="footer-title">Categories</h3>
+                  <h3 class="footer-title">{{'Categories' | translate}}</h3>
                   <ul class="footer-links"  *ngFor="let category of allCategories">
                     <li style="margin-bottom: 10px"><a (click)="productsByCategory(category)" class="footer-text" href="#">{{category}}</a></li>
                   </ul>
@@ -877,26 +884,13 @@
 
               <div class="clearfix visible-xs"></div>
 
-              <div class="col-md-3 col-xs-6" >
-                <div class="footer">
-                  <h3 class="footer-title">Information</h3>
-                  <ul class="footer-links">
-                    <li ><a href="#" class="footer-text">About Us</a></li>
-                    <li><a href="#" class="footer-text">Contact Us</a></li>
-                    <li><a href="#" class="footer-text">Privacy Policy</a></li>
-                    <li><a href="#" class="footer-text">Orders and Returns</a></li>
-                    <li><a href="#" class="footer-text">Terms & Conditions</a></li>
-                  </ul>
-                </div>
-              </div>
-
               <div class="col-md-3 col-xs-6" *ngIf="user">
                 <div class="footer">
-                  <h3 class="footer-title">Service</h3>
+                  <h3 class="footer-title">{{'Services' | translate}}</h3>
                   <ul class="footer-links">
-                    <li class="footer-text"><a href="/cart" class="footer-text">View Cart</a></li>
-                    <li class="footer-text"><a href="/wishList" class="footer-text">Wishlist</a></li>
-                    <li class="footer-text"><a href="#/help" class="footer-text">Help</a></li>
+                    <li class="footer-text"><a href="/cart" class="footer-text">{{'View Cart' |translate}}</a></li>
+                    <li class="footer-text"><a href="/wishList" class="footer-text">{{'WishList' |translate}}</a></li>
+                    <li class="footer-text"><a href="#/help" class="footer-text">{{'Help' |translate}}</a></li>
                   </ul>
                 </div>
               </div>

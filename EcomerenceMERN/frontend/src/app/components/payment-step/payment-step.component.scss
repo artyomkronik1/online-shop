@@ -1,5 +1,10 @@
 
-
+.card-footer{
+  background-color: white;
+}
+.card-header{
+  background-color: white;
+}
 .fade-in-out {
   animation: fadeInOut 0.5s ease-in-out;
 }
@@ -87,6 +92,49 @@
 }
 //mobile
 @media (max-width: 767px) {
+  ::ng-deep .my-custom-dialog-class {
+    .mdc-dialog {
+      border: 4px solid  #ef233c ;
+      //background-color: #0006;
+      //border: none;
+      //padding: 0;
+      //position: fixed;
+      //top: 50%;
+      //margin: -400px 0 0 -450px;
+      //left: 50%;
+      //border-radius: 12px;
+      //box-shadow: 0 12px 20px #41414140;
+      //z-index:2100;
+      //backdrop-filter:blur(20px);
+      width: 900px;
+      height:700px;
+
+
+
+      border-radius: 12px;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      position: fixed;
+      z-index: 110;
+      top: 50%;
+      overflow: visible;
+      transform: translateY(-50%);
+
+
+
+    }
+    .mat-mdc-dialog-content{
+      min-height: 100%;
+      overflow: hidden;
+      background: white;
+      //backdrop-filter:blur(20px);
+      max-height: 100%;
+
+    }
+
+
+  }
   .payment-footer{
     padding:0;
   }
