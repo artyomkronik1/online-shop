@@ -8,7 +8,7 @@
   justify-content: space-around;
   gap: 10px;
   position: absolute;
-  width: 200px;
+  width: 100px;
   background: #FFF;
   padding: 15px;
   border-radius: 25px;
@@ -26,7 +26,7 @@
   justify-content: space-around;
   gap: 10px;
   position: absolute;
-  width: 200px;
+  width: 100px;
   background: #FFF;
   padding: 15px;
   border-radius: 25px;
@@ -34,7 +34,7 @@
   -webkit-box-shadow: 0px 0px 0px 2px #E4E7ED;
   box-shadow: 0px 0px 0px 2px #E4E7ED;
   z-index: 99;
-  right: 10px;
+  //right: 10px;
   opacity: 1;
 
 }
@@ -82,6 +82,7 @@ position: fixed; z-index: 5; width: 100%; top: 0;
     right:-15px;
     position: relative;
   }
+
   .header-logo {
   margin-inline-start: -22px;
   }
@@ -103,7 +104,8 @@ position: fixed; z-index: 5; width: 100%; top: 0;
     width: 100%;
   }
   .header-links{
-    justify-content: start;
+    justify-content: end;
+    align-items: center;
     width: 100%;
   }
 }

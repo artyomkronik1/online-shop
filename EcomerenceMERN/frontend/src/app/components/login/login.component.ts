@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit{
   password:String="";
   email:String="";
   user:any;
+  dir:any;
   loggedIn:any;
   constructor(private authService:SocialAuthService, private http: HttpClient,private toast: ToastrService,private router:Router,) {
   }
@@ -31,6 +32,9 @@ register(){
   //localStorage.setItem('signedup', JSON.stringify(false))
   this.router.navigate(['/singup'])
 }
+  ngDoCheck() {
+    this.dir = JSON.parse(localStorage.getItem('lan') as any) == 'he' ? "rtl" : "ltr"
+  }
 ngOnInit(){
     this.authService.authState.subscribe((user)=>{
       this.user = user;
@@ -54,7 +58,13 @@ ngOnInit(){
           //   document.location.reload()
           localStorage.setItem('logged', JSON.stringify(true))
           localStorage.setItem('signedup', JSON.stringify(true))
-          localStorage.setItem('user', JSON.stringify(res.user))
+          let user:any={
+            name:res.user.name,
+            happyday:res.user?.happyday,
+            birthday:res.user.birthday
+
+          }
+          localStorage.setItem('user', JSON.stringify(user))
           window.localStorage.setItem('loading', JSON.stringify(true))
           this.sleep(500).then(() => {
             this.router.navigate(['/']).then(() => {

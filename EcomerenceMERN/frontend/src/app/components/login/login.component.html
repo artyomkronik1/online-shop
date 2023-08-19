@@ -1,4 +1,4 @@
-<section class="p-5" >
+<section class="p-5">
   <div *ngIf="loggedIn">
     <img src="{{ user.response.picture.data.url }}">
     <div>
@@ -7,7 +7,7 @@
     </div>
   </div>
   <app-toggle-loading/>
-  <div class="container-fluid h-custom">
+  <div class="container-fluid h-custom" [dir]="dir">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-md-9 col-lg-6 col-xl-5">
         <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
@@ -15,7 +15,7 @@
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
         <form>
-          <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+          <div class="d-flex flex-row align-items-center title">
             <p class="lead fw-normal mb-0 me-3"  style="color:#D60B52; font-weight: bold; font-size: 25px">{{ "Log In" | translate}}</p>
 <!--            <button type="button" class="btn filter-btn btn-floating mx-1" (click)="loginWithFB()">-->
 <!--              <i class="fa fa-facebook-square"></i>-->

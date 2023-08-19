@@ -57,11 +57,6 @@ export class SignupComponent {
   signUp(){
     let user:any={
       name:this.username,
-      password:this.password,
-      email:this.email,
-      phone:this.phone,
-      birthday:this.birthday,
-      happyday:this.happyday,
     }
     // check if data is no empty
     if(this.username.length==0 || this.password.length==0 || this.email.length==0 || this.phone.length==0 || this.birthday.length==0 ){

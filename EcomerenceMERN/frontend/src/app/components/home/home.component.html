@@ -860,10 +860,10 @@
           <!-- container -->
           <div class="container" style="display: flex; justify-content: space-around; width: 100%">
             <!-- row -->
-            <div class="row">
+            <div class="row" style="display: flex; justify-content: space-around; width: 100%">
               <div class="col-md-3 col-xs-6">
                 <div class="footer">
-                  <h3 class="footer-title">{{'About Me' | translate}}</h3>
+                  <h3 class="footer-title">{{'About Us' | translate}}</h3>
                   <p class="footer-text">{{'We are an Online-Shop - web application that you can buy here everything'| translate}}</p>
                   <ul>
                     <li class="footer-text"><a  class="footer-text"><i class="fa fa-map-marker "></i>1734 Stonecoal Road</a></li>
@@ -877,7 +877,7 @@
                 <div class="footer">
                   <h3 class="footer-title">{{'Categories' | translate}}</h3>
                   <ul class="footer-links"  *ngFor="let category of allCategories">
-                    <li style="margin-bottom: 10px"><a (click)="productsByCategory(category)" class="footer-text" href="#">{{category}}</a></li>
+                    <li style="margin-bottom: 10px"><a (click)="productsByCategory(category)" class="footer-text" href="#">{{category  |translate}}</a></li>
                   </ul>
                 </div>
               </div>
@@ -889,7 +889,7 @@
                   <h3 class="footer-title">{{'Services' | translate}}</h3>
                   <ul class="footer-links">
                     <li class="footer-text"><a href="/cart" class="footer-text">{{'View Cart' |translate}}</a></li>
-                    <li class="footer-text"><a href="/wishList" class="footer-text">{{'WishList' |translate}}</a></li>
+                    <li class="footer-text"><a href="/wishList" class="footer-text">{{'Your Wishlist' |translate}}</a></li>
                     <li class="footer-text"><a href="#/help" class="footer-text">{{'Help' |translate}}</a></li>
                   </ul>
                 </div>
@@ -907,14 +907,7 @@
             <!-- row -->
             <div class="row">
               <div class="col-md-12 text-center">
-                <ul class="footer-payments">
-                  <li><a href="#"><i class="fa fa-cc-visa"></i></a></li>
-                  <li><a href="#"><i class="fa fa-credit-card"></i></a></li>
-                  <li><a href="#"><i class="fa fa-cc-paypal"></i></a></li>
-                  <li><a href="#"><i class="fa fa-cc-mastercard"></i></a></li>
-                  <li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
-                  <li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
-                </ul>
+
                 <span class="copyright">
 								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 								Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved to Artiom Kronik | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>

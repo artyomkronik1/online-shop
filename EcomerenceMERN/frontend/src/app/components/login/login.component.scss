@@ -8,7 +8,25 @@
 .td:hover{
 color:#D60B52
 }
+.form-control{
+  border-radius: 30px;
+}
 .singup-t{
   font-size: 12px;
   display: flex;
+}
+//[dir="ltr"] .title{
+//  justify-content: start;
+//}
+//[dir="rtl"] .title{
+//  justify-content: end;
+//}
+//mobile
+@media (max-width: 767px) {
+  .h-custom {
+    margin-top: 120px;
+  }
+  .img-fluid{
+    margin-bottom: 50px;
+  }
 }

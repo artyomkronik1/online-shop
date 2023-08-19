@@ -8,10 +8,19 @@
   color:white;
   width: 250px;
 }
+.form-control{
+  border-radius: 30px;
+}
 .loginbtn{
   background: #D60B52 ;border-radius: 30px; border: none; align-items: center;
   color: white;
 }
 .loginbtn:hover{
   background: #f87e96;;
+}
+//mobile
+@media (max-width: 767px) {
+  .signup {
+    margin-top: 120px;
+  }
 }
