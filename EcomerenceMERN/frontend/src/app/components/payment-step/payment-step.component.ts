@@ -5,6 +5,7 @@ import {MatDialogRef} from "@angular/material/dialog";
 import {ToastrService} from "ngx-toastr";
 import {CartService} from "../../services/cart.service";
 import {NgxSpinnerService} from "ngx-spinner";
+import {mobile} from "../../app.component";
 export const fadeInOutAnimation = trigger('fadeInOut', [
   transition(':enter', [
     style({ opacity: 0 }),
@@ -42,7 +43,7 @@ export class PaymentStepComponent {
   month:string='';
   year:string='';
   spinnerType:any;
-
+  selectedDate:any;
   constructor(public translate:TranslateService, private cartService: CartService,private toast: ToastrService,              private spinner: NgxSpinnerService, private dialogRef: MatDialogRef<PaymentStepComponent>) {
     translate.addLangs(['en', 'he']);
     this.spinnerType ='ball-clip-rotate-pulse';
@@ -138,4 +139,6 @@ export class PaymentStepComponent {
     // sengind event that dialog closed
     this.dialogRef.close('closed');
   }
+
+  protected readonly mobile = mobile;
 }

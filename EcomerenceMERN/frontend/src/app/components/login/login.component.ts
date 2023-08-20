@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit{
   user:any;
   dir:any;
   loggedIn:any;
+  lan:any = JSON.parse(localStorage.getItem('lan') as any);
   constructor(private authService:SocialAuthService, private http: HttpClient,private toast: ToastrService,private router:Router,) {
   }
   sleep(ms:any) {
@@ -34,6 +35,7 @@ register(){
 }
   ngDoCheck() {
     this.dir = JSON.parse(localStorage.getItem('lan') as any) == 'he' ? "rtl" : "ltr"
+    this.lan = JSON.parse(localStorage.getItem('lan') as any);
   }
 ngOnInit(){
     this.authService.authState.subscribe((user)=>{
@@ -42,10 +44,20 @@ ngOnInit(){
     })
 }
   login(){
-
+    let str=""
+    let type=""
+    if(this.lan=='en')
+    {
+      str="One or more fields are empty"
+      type="ERROR"
+    }
+    else{
+      str="שדה אחד או יותר ריקים, אנא מלא את כל הפרטים "
+      type="שגיאה"
+    }
     // check if data is no empty
     if( this.password.length==0 || this.email.length==0 ){
-      this.toast.error('One or more fields are empty', 'ERROR', {
+      this.toast.error(str, type, {
         timeOut: 1500,
         progressBar: true,
         progressAnimation: 'increasing',
@@ -73,9 +85,18 @@ ngOnInit(){
             })
           })
 
-          //
-          //
-          this.toast.success(`${res.user.name} logged in successfuly`, 'SUCCESS', {
+          let str=""
+          let type=""
+          if(this.lan=='en')
+          {
+            str="logged in successfuly"
+            type="SUCCESS"
+          }
+          else{
+            str="כניסה בוצעה בהצלחה "
+            type="הצלחה"
+          }
+          this.toast.success( str, type, {
             timeOut: 1500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -83,7 +104,18 @@ ngOnInit(){
           });
 
         } else {
-          this.toast.error(`user does not exist`, 'ERROR', {
+          let str=""
+          let type=""
+          if(this.lan=='en')
+          {
+            str="user does not exist"
+            type="ERROR"
+          }
+          else{
+            str="משתמש אינו קיים "
+            type="שגיאה"
+          }
+          this.toast.error(str, type, {
             timeOut: 1500,
             progressBar: true,
             progressAnimation: 'increasing',

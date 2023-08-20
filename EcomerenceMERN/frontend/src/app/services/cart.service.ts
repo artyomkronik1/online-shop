@@ -16,7 +16,7 @@ import {TranslateService} from "@ngx-translate/core";
 export class CartService {
   private serverURL = "http://localhost:3000/api";
   dir:any='ltr';
-  // Data variable to store the cart information on the client's local storage
+  lan:any = JSON.parse(localStorage.getItem('lan') as any);
   private cartDataClient: CartModelPublic = {
     total: 0,
     data: [],
@@ -34,6 +34,7 @@ export class CartService {
     this.translate.use(lang)
   }
   ngDoCheck(){
+    this.lan  = JSON.parse(localStorage.getItem('lan') as any)
     this.dir=  JSON.parse(localStorage.getItem('lan') as any) == 'he' ? "rtl" : "ltr"
     if(this.dir=="rtl"){
       this.switchLang('he')
@@ -107,19 +108,20 @@ export class CartService {
     if(Number(this.cartDataClient.wishList.length)==0 )
     {
       this.cartDataClient.wishList.push({id:prod.id})
-      this.cartDataClient.wishList.push({id:prod.id})
-
       localStorage.setItem('cart', JSON.stringify(this.cartDataClient));
       this.cartData$.next({...this.cartDataClient});
       let str=""
-      if(this.dir=='ltr')
+      let title=""
+      if(this.lan=='en')
       {
+        title ="Product Added"
         str="added to the wish list"
       }
       else{
-        str="נוסף בהצלחה לפריטים אהובים"
+        title = "המוצר התווסף"
+        str="נוסף בהצלחה לפריטים אהובים "
       }
-      this.toast.success(`${prod.name}` + str, 'Product Added', {
+      this.toast.success(`${prod.title}` + '\n' + str, title, {
         timeOut: 1500,
         progressBar: true,
         progressAnimation: 'increasing',
@@ -135,7 +137,18 @@ export class CartService {
         if(wish.id===prod.id)
         {
           inList =  1
-          this.toast.info(`${prod.name} is already in wish list`, 'Product Added', {
+          let str=""
+          let title=""
+          if(this.lan=='en')
+          {
+            title="Product already exist"
+            str="is already in wish list"
+          }
+          else{
+            title ="המוצר כבר קיים ברשימה"
+            str=" כבר קיים בפריטים אהובים "
+          }
+          this.toast.info(`${prod.title}` + str,  title, {
             timeOut: 1500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -146,9 +159,19 @@ export class CartService {
 
       if(inList===0)
       {
+        let str=""
+        let title=""
+        if(this.lan=='en')
+        {
+          title ="Product Added"
+          str="added to the wish list"
+        }
+        else{
+          title = "המוצר התווסף"
+          str="נוסף בהצלחה לפריטים אהובים "
+        }
         this.cartDataClient.wishList.push({id:prod.id})
-        this.cartDataClient.wishList.push({id:prod.id})
-        this.toast.success(`${prod.name} added to the wish list`, 'Product Added', {
+        this.toast.success(`${prod.title}` + str, title, {
           timeOut: 1500,
           progressBar: true,
           progressAnimation: 'increasing',
@@ -182,11 +205,7 @@ export class CartService {
           progressAnimation: 'increasing',
           positionClass: 'toast-top-right'
         });
-
       } else {
-
-
-
         const index =  prod.id;
         let prodAlreadyExist = false;
         this.cartDataClient.data.forEach((data:any)=>{
@@ -208,7 +227,7 @@ export class CartService {
                 flag=true;
               }
             })
-            if(flag===false){
+            if(!flag){
               this.cartDataClient.data.push({incart:quantity?quantity:1, id:id})
             }
             this.CalculateTotal();
@@ -223,10 +242,20 @@ export class CartService {
                 cardata.numInCart +=num_in_cart ;
               }
             })
-            this.cartDataClient.total = this.cartDataClient.total;
             localStorage.setItem('cart', JSON.stringify(this.cartDataClient));
             this.cartData$.next({...this.cartDataClient});
-            this.toast.info(`${prod.name} quantity updated in the cart`, 'Product Updated', {
+            let str=""
+            let title=""
+            if(this.lan=='en')
+            {
+              title ="Product Updated"
+              str="quantity updated in the cart"
+            }
+            else{
+              title = "המוצר התעדכן"
+              str=" הכמות התעדכנה "
+            }
+            this.toast.info(`${prod.name}` + str, title, {
               timeOut: 1500,
               progressBar: true,
               progressAnimation: 'increasing',
@@ -237,7 +266,7 @@ export class CartService {
 
         })
         // IF product is not in the cart array
-        if(prodAlreadyExist===false) {
+        if(!prodAlreadyExist) {
           this.cartDataClient.data.push({
             numInCart: 1,
             product: prod
@@ -247,8 +276,18 @@ export class CartService {
             incart: 1,
             id: prod.id
           });
-
-          this.toast.success(`${prod.name} added to the cart`, 'Product Added', {
+          let str=""
+          let title=""
+          if(this.lan=='en')
+          {
+            title ="Product Added"
+            str="added to the wish list"
+          }
+          else{
+            title = "המוצר התווסף"
+            str="נוסף בהצלחה לפריטים אהובים "
+          }
+          this.toast.success(`${prod.name}`+ str, title, {
             timeOut: 1500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -278,7 +317,18 @@ export class CartService {
         this.cartDataClient.total = prod.price
         localStorage.setItem('cart', JSON.stringify(this.cartDataClient));
         this.cartData$.next({...this.cartDataClient});
-        this.toast.success(`${prod.name} added to the cart`, 'Product Added', {
+        let str=""
+        let title=""
+        if(this.lan=='en')
+        {
+          title ="Product Added"
+          str="added to the wish list"
+        }
+        else{
+          title = "המוצר התווסף"
+          str="נוסף בהצלחה לפריטים אהובים "
+        }
+        this.toast.success(`${prod.name}` + str, title, {
           timeOut: 1500,
           progressBar: true,
           progressAnimation: 'increasing',
@@ -296,7 +346,18 @@ export class CartService {
             this.cartDataClient.total+=prod.price
             localStorage.setItem('cart', JSON.stringify(this.cartDataClient));
             this.cartData$.next({...this.cartDataClient});
-            this.toast.info(`${prod.name} quantity updated in the cart`, 'Product Updated', {
+            let str=""
+            let title=""
+            if(this.lan=='en')
+            {
+              title ="Product Updated"
+              str="quantity updated in the cart"
+            }
+            else{
+              title = "המוצר התעדכן"
+              str=" הכמות התעדכנה "
+            }
+            this.toast.info(`${prod.name}`+ str, title, {
               timeOut: 1500,
               progressBar: true,
               progressAnimation: 'increasing',
@@ -307,13 +368,24 @@ export class CartService {
         })
 
         // IF product is not in the cart array
-        if(prodAlreadyExist===false) {
+        if(!prodAlreadyExist) {
           this.cartDataClient.data.push({
             numInCart: 1,
             product: prod
           });
           this.cartDataClient.total+=prod.price
-          this.toast.success(`${prod.name} added to the cart`, 'Product Added', {
+          let str=""
+          let title=""
+          if(this.lan=='en')
+          {
+            title ="Product Added"
+            str="added to the wish list"
+          }
+          else{
+            title = "המוצר התווסף"
+            str="נוסף בהצלחה לפריטים אהובים "
+          }
+          this.toast.success(`${prod.name}` + str, title, {
             timeOut: 1500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -336,7 +408,6 @@ export class CartService {
         //increase the numbers in cart of this product in local storage
         data.numInCart++
         this.CalculateTotal();
-        this.cartDataClient.total = this.cartDataClient.total;
         localStorage.setItem('cart', JSON.stringify(this.cartDataClient));
         this.cartData$.next({...this.cartDataClient});
 
@@ -350,7 +421,6 @@ export class CartService {
           this.cartData$.next({...this.cartDataClient});
           this.cartDataClient.data[index].incart = data.numInCart;
           this.CalculateTotal();
-          this.cartDataClient.total = this.cartDataClient.total;
           localStorage.setItem('cart', JSON.stringify(this.cartDataClient));
         }
       }
@@ -358,19 +428,26 @@ export class CartService {
   }
 
   DeleteProductFromCart(index: number) {
-    if (window.confirm('Are you sure you want to remove the item?')) {
+    let str=""
+    if(this.lan=='en')
+    {
+      str="Are you sure you want to remove the item?"
+    }
+    else{
+
+      str="האם ברצונך למחוק את הפריט? "
+    }
+    if (window.confirm(str)) {
       this.cartDataClient.data.splice(index, 1);
       let total:number= 0;
       this.cartDataClient.data.forEach((p:any)=>{
         total+=p.product.price * p.numInCart
       })
       this.cartDataClient.total = total
-      console.log('d',this.cartDataClient)
       if (this.cartDataClient.total === 0) {
         this.cartDataClient = {total: 0, data: [], wishList: []};
       }
       window.localStorage.setItem('cart', JSON.stringify(this.cartDataClient));
-
       this.cartData$.next({...this.cartDataClient});
     } else {
       // IF THE USER CLICKS THE CANCEL BUTTON
@@ -380,7 +457,16 @@ export class CartService {
 
 
   DeleteProductFromWishList(index: number) {
-    if (window.confirm('Are you sure you want to remove the item?')) {
+    let str=""
+    if(this.lan=='en')
+    {
+      str="Are you sure you want to remove the item?"
+    }
+    else{
+
+      str="האם ברצונך למחוק את הפריט? "
+    }
+    if (window.confirm(str)) {
       this.cartDataClient.wishList.splice(index, 1);
         localStorage.setItem('cart', JSON.stringify(this.cartDataClient));
         this.cartData$.next({...this.cartDataClient});

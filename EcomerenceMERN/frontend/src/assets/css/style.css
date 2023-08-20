@@ -696,8 +696,12 @@ textarea.input {
 \*----------------------------*/
 /*mobile*/
 @media only screen and (max-width: 991px) {
+  [dir='rtl'] .header-ctn{
+    position: relative;
+    left: 0px;
+  }
   #header{
-    overflow-y: hidden;
+    /*//overflow-y: hidden;*/
   }
   .header-ctn>div+div {
     margin-left: -10px;

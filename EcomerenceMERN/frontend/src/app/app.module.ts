@@ -38,6 +38,8 @@ import {
 } from '@abacritt/angularx-social-login';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import { PaymentStepComponent } from './components/payment-step/payment-step.component';
+import { MatNativeDateModule } from '@angular/material/core'; // Import this module
+// Import this module
 
 @NgModule({
   declarations: [
@@ -61,6 +63,7 @@ import { PaymentStepComponent } from './components/payment-step/payment-step.com
 
   ],
   imports: [
+    MatNativeDateModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

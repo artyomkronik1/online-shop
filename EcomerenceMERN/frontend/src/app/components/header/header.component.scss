@@ -31,7 +31,7 @@
   -webkit-box-shadow: 0px 0px 0px 2px #E4E7ED;
   box-shadow: 0px 0px 0px 2px #E4E7ED;
   z-index: 99;
-  right: -10px;
+ left:0px;
   opacity: 1;
 
 }
@@ -118,9 +118,10 @@ height:45px; border-radius: 45%
   }
   .container{
     padding-left: 10px;
-    margin-right: -22px;
+    margin-inline-start: -6px;
+   // margin-right: -22px;
     padding-right: 10px;
-    margin-left: 0px;
+    //margin-left: 0px;
    // padding-left:7px
   }
   .header{
@@ -133,7 +134,7 @@ height:45px; border-radius: 45%
   }
 
   .top-header{
-    margin-right: 25px  ;
+   // margin-right: 25px  ;
     width: 100%;
   }
   .languages{

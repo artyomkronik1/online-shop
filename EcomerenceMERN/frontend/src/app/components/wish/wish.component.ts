@@ -15,6 +15,15 @@ export class WishComponent implements OnInit {
 
 
   }
+  ngDoCheck(){
+    let cart =  JSON.parse(localStorage.getItem('cart') as any)
+    if(cart)
+    {
+      this.cartData = cart.wishList
+
+
+    }
+  }
   //get all products
   ngOnInit():void{
     let ids:any = [];

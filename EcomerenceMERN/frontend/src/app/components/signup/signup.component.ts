@@ -18,6 +18,7 @@ export class SignupComponent {
   birthday:String="";
   phone:String="";
   dir:any="";
+  lan:any = JSON.parse(localStorage.getItem('lan') as any);
   constructor(public translate:TranslateService, private http: HttpClient,private toast: ToastrService,private router:Router,    ) {
     translate.addLangs(['en', 'he']);
 
@@ -36,7 +37,6 @@ export class SignupComponent {
     this.translate.use(lang)
   }
   login(){
-
   //  location.reload()
     window.localStorage.setItem('loading', JSON.stringify(true))
    // localStorage.setItem('signedup', JSON.stringify(true))
@@ -53,14 +53,27 @@ export class SignupComponent {
     else{
       this.switchLang('en')
     }
+    this.lan = JSON.parse(localStorage.getItem('lan') as any);
   }
   signUp(){
     let user:any={
       name:this.username,
     }
     // check if data is no empty
+
+    let str=""
+    let type=""
+    if(this.lan=='en')
+    {
+      str="One or more fields are empty"
+      type="ERROR"
+    }
+    else{
+      str="שדה אחד או יותר ריקים, אנא מלא את כל הפרטים "
+      type="שגיאה"
+    }
     if(this.username.length==0 || this.password.length==0 || this.email.length==0 || this.phone.length==0 || this.birthday.length==0 ){
-      this.toast.error('One or more fields are empty', 'ERROR', {
+      this.toast.error(str, type, {
         timeOut: 1500,
         progressBar: true,
         progressAnimation: 'increasing',
@@ -80,7 +93,18 @@ export class SignupComponent {
           localStorage.setItem('user', JSON.stringify(user))
           window.localStorage.setItem('loading', JSON.stringify(true))
           this.router.navigate(['/'])
-          this.toast.success(`${this.username} signed in successfuly`, 'SUCCESS', {
+          let str=""
+          let type=""
+          if(this.lan=='en')
+          {
+            str="signed in successfuly"
+            type="SUCCESS"
+          }
+          else{
+            str="הרשמה בוצעה בהצלחה "
+            type="הצלחה"
+          }
+          this.toast.success( str, type, {
             timeOut: 1500,
             progressBar: true,
             progressAnimation: 'increasing',
@@ -95,7 +119,18 @@ export class SignupComponent {
           })
         }
         if (res.success == false) {
-          this.toast.error(`${this.username} is already exist`, 'ERROR', {
+          let str=""
+          let type=""
+          if(this.lan=='en')
+          {
+            str="is already exist"
+            type="ERROR"
+          }
+          else{
+            str=" משתמש כבר קיים במערכת "
+            type="שגיאה"
+          }
+          this.toast.error(`${this.username}` + str, type, {
             timeOut: 1500,
             progressBar: true,
             progressAnimation: 'increasing',
