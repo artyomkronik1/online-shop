@@ -105,7 +105,7 @@
                                 <h3 style="  color: #D10024; display:flex; font-size: 14px; flex-wrap: wrap">{{c?.product?.name}}</h3>
 
                                 <h4 class="product-price" *ngIf="lan==='en'" ><span class="qty" style="font-family: cursive; font-weight: bold">{{c?.numInCart}} x {{ c.product?.price | currency:'USD'}}</span></h4>
-                                <h4 class="product-price" *ngIf="lan==='he'" ><span class="qty" style="font-family: cursive; font-weight: bold"> x {{ c.product?.price | currency:'USD'}}   {{c.numInCart}} </span></h4>
+                                <h4 class="product-price" *ngIf="lan==='he'" ><span class="qty" style="font-family: cursive; font-weight: bold">  {{ c.product?.price | currency:'USD'}}  - {{c.numInCart}} </span></h4>
 
                               </div>
                               <button class="delete" (click)="cartService.DeleteProductFromCart(i)"><i class="fa fa-close"></i></button>

@@ -54,6 +54,7 @@ export class ThankyouComponent  {
     this.translate.use(lang)
   }
   ngDoCheck(){
+    console.log(this.products)
     // lagm
     this.dir=  JSON.parse(localStorage.getItem('lan') as any) == 'he' ? "rtl" : "ltr"
     if(this.dir=="rtl"){

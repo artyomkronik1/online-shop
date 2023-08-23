@@ -374,6 +374,9 @@ padding: 10px 14px;
   margin: 50px ;
   border:none;
 }
+.card-body{
+  padding: 0
+}
 .section{display: flex; justify-content: space-between; margin-top: 50px}
 @media (max-width: 767px) {
   .form-check-inline:visited + .form-check-label{

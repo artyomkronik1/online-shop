@@ -59,7 +59,7 @@ position: fixed; z-index: 5; width: 100%; top: 0;
 }
 
 [dir="ltr"] .cart-dropdown{
-  right: 0;
+  right: 0;;
   //right:none;
 }
 [dir="rtl"] .cart-dropdown{
@@ -92,6 +92,9 @@ height:45px; border-radius: 45%
 }
 //mobile
 @media (max-width: 767px) {
+  .cart-dropdown, .user-display{
+    width: max-content;
+  }
   .avatar{
     height: 40px;
     width: 40px;

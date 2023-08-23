@@ -43,6 +43,7 @@ export class PaymentStepComponent {
   month:string='';
   year:string='';
   spinnerType:any;
+  lan:any = JSON.parse(localStorage.getItem('lan') as any);
   selectedDate:any;
   constructor(public translate:TranslateService, private cartService: CartService,private toast: ToastrService,              private spinner: NgxSpinnerService, private dialogRef: MatDialogRef<PaymentStepComponent>) {
     translate.addLangs(['en', 'he']);
@@ -68,7 +69,18 @@ export class PaymentStepComponent {
     // check card number length
     if(this.cardNumber.toString().length!=12)
     {
-      this.toast.error(`Invalid card number`, 'ERROR', {
+      let str=""
+      let type=""
+      if(this.lan=='en')
+      {
+        str="Invalid card number"
+        type="ERROR"
+      }
+      else{
+        str="מספר כרטיס אינו תקין"
+        type="שגיאה"
+      }
+      this.toast.error(str, type, {
         timeOut: 1500,
         progressBar: true,
         progressAnimation: 'increasing',
@@ -78,7 +90,18 @@ export class PaymentStepComponent {
     // check name  length
     if(this.name.toString().length==0)
     {
-      this.toast.error(`Please enter a name`, 'ERROR', {
+      let str=""
+      let type=""
+      if(this.lan=='en')
+      {
+        str="Please enter a name"
+        type="ERROR"
+      }
+      else{
+        str="אנא הכנס שם מלא"
+        type="שגיאה"
+      }
+      this.toast.error(str, type, {
         timeOut: 1500,
         progressBar: true,
         progressAnimation: 'increasing',
@@ -88,7 +111,18 @@ export class PaymentStepComponent {
     // check month  length
     if(this.month.toString().length!=2)
     {
-      this.toast.error(`Invalid month number`, 'ERROR', {
+      let str=""
+      let type=""
+      if(this.lan=='en')
+      {
+        str="Invalid month number"
+        type="ERROR"
+      }
+      else{
+        str="חודש אינו תקין"
+        type="שגיאה"
+      }
+      this.toast.error(str, type, {
         timeOut: 1500,
         progressBar: true,
         progressAnimation: 'increasing',
@@ -98,7 +132,18 @@ export class PaymentStepComponent {
     // check year  length
     if(this.year.toString().length!=4)
     {
-      this.toast.error(`Invalid year number`, 'ERROR', {
+      let str=""
+      let type=""
+      if(this.lan=='en')
+      {
+        str="Invalid year number"
+        type="ERROR"
+      }
+      else{
+        str="שנה אינה תקינה"
+        type="שגיאה"
+      }
+      this.toast.error(str, type, {
         timeOut: 1500,
         progressBar: true,
         progressAnimation: 'increasing',
@@ -108,7 +153,18 @@ export class PaymentStepComponent {
     // check year  length
     if(this.cvv.toString().length!=3)
     {
-      this.toast.error(`Invalid CVV number`, 'ERROR', {
+      let str=""
+      let type=""
+      if(this.lan=='en')
+      {
+        str="Invalid CVV number"
+        type="ERROR"
+      }
+      else{
+        str="מספר CVV אינו תקין"
+        type="שגיאה"
+      }
+      this.toast.error(str, type, {
         timeOut: 1500,
         progressBar: true,
         progressAnimation: 'increasing',
@@ -121,6 +177,7 @@ export class PaymentStepComponent {
     }
   }
   ngDoCheck(){
+    this.lan = JSON.parse(localStorage.getItem('lan') as any);
     this.dir=  JSON.parse(localStorage.getItem('lan') as any) == 'he' ? "rtl" : "ltr"
     if(this.dir=="rtl"){
       this.switchLang('he')

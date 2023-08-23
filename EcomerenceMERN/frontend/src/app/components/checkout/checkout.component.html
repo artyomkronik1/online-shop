@@ -22,26 +22,26 @@
             <h3 class="title">{{ "Billing address"  | translate}}</h3>
           </div>
           <div class="form-group">
-            <input class="input" type="text"  name="first-name" placeholder="{{'First Name' | translate}}">
+            <input class="input" type="text"  name="first-name" [(ngModel)]="first_name"  [ngModelOptions]="{standalone: true}" placeholder="{{'First Name' | translate}}">
           </div>
           <div class="form-group">
-            <input class="input" type="text" name="last-name"  placeholder="{{'Last Name' | translate}}">
+            <input class="input" type="text" name="last-name" [(ngModel)]="last_name"  [ngModelOptions]="{standalone: true}"  placeholder="{{'Last Name' | translate}}">
           </div>
           <div class="form-group">
-            <input class="input" type="email" name="email" placeholder="{{'Email' | translate}}">
+            <input class="input" type="email" name="email" [(ngModel)]="email"  [ngModelOptions]="{standalone: true}" placeholder="{{'Email' | translate}}">
           </div>
           <div class="form-group">
-            <input class="input" type="text" name="address" placeholder="{{'Address' | translate}}">
+            <input class="input" type="text" name="address" [(ngModel)]="addres"  [ngModelOptions]="{standalone: true}" placeholder="{{'Address' | translate}}">
           </div>
           <div class="form-group">
-            <input class="input" type="text" name="city" placeholder="{{'City' | translate}}">
+            <input class="input" type="text" name="city" [(ngModel)]="city"  [ngModelOptions]="{standalone: true}" placeholder="{{'City' | translate}}">
           </div>
           <div class="form-group">
-            <input class="input" type="text" name="country" placeholder="{{'Country' | translate}}">
+            <input class="input" type="text" name="country" [(ngModel)]="country"  [ngModelOptions]="{standalone: true}" placeholder="{{'Country' | translate}}">
           </div>
 
           <div class="form-group">
-            <input class="input" type="tel" name="tel" placeholder="{{'Telephone' | translate}}">
+            <input class="input" type="tel" name="tel" [(ngModel)]="phone"  [ngModelOptions]="{standalone: true}" placeholder="{{'Telephone' | translate}}">
           </div>
 <!--          <div class="form-group">-->
 <!--&lt;!&ndash;            <div class="input-checkbox">&ndash;&gt;-->

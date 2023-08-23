@@ -47,6 +47,12 @@ openPopup:boolean=false;
       { letters: ['A', 'B', 'C'], color: '#FF5733' },
       { letters: ['D', 'E', 'F'], color: '#33FF57' },
       { letters: ['G', 'H', 'I'], color: '#5733FF' },
+      { letters: ['J', 'K', 'L'], color: '#229bdc' },
+      { letters: ['M', 'N', 'O'], color: '#dcd922' },
+      { letters: ['P', 'Q', 'R'], color: '#f87e96' },
+      { letters: ['S', 'T', 'U'], color: '#7ef8c5' },
+      { letters: ['V', 'W'], color: '#9355f5' },
+      { letters: ['Y', 'Z'], color: '#a81616' },
       // Define more color options for other letters
     ];
 

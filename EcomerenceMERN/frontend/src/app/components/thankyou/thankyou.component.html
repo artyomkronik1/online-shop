@@ -11,28 +11,28 @@
       <table class="table table-striped" *ngIf="products.length>0">
         <thead>
         <tr>
-          <th>Image</th>
-          <th>Title</th>
-          <th>Price</th>
-          <th>Quantity</th>
+          <th>{{'Image' | translate}}</th>
+          <th>{{'Title' | translate}}</th>
+          <th>{{'Price' | translate}}</th>
+          <th>{{'Quantity' | translate}}</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let p of products">
           <td>
-            <img [src]="p.image" alt="{{p.name}}" class="img-thumbnail" width="100px">
+            <img [src]="p?.image" alt="{{p?.name}}" class="img-thumbnail" width="100px">
           </td>
 
-          <td>{{p.name}}</td>
-          <td style="font-family: cursive">{{p.price | currency:'USD'}}</td>
-          <td>{{p.quantityOrdered}}</td>
+          <td style="align-items: center">{{p?.name}}</td>
+          <td style="font-family: cursive ; align-items: center">{{p?.price | currency:'USD'}}</td>
+          <td>{{p?.numInCart}}</td>
         </tr>
 
         <tr class="border-0">
           <td style="border: none;"></td>
           <td></td>
-          <td style="color: #D10024; font-weight: bold; font-size: 16px">TOTAL</td>
-          <td  style="font-family: cursive;color: #D10024; font-weight: bold;" >{{cartTotal | currency:'USD'}}</td>
+          <td style="color: #D10024; font-weight: bold; font-size: 16px">{{'TOTAL' | translate}}</td>
+          <td  style=" align-items: center;font-family: cursive;color: #D10024; font-weight: bold;" >{{cartTotal | currency:'USD'}}</td>
 
         </tr>
         </tbody>

@@ -34,7 +34,7 @@
 }
 ::ng-deep .my-custom-dialog-class {
   .mdc-dialog {
-    border: 4px solid  #ef233c ;
+    border: 4px solid  #D60B52 ;
     //background-color: #0006;
     //border: none;
     //padding: 0;
@@ -76,7 +76,7 @@
 
 }
 .filter-btn{
-  background: #ef233c ;border-radius: 30px; border: none; align-items: center;
+  background:  #D60B52 ;border-radius: 30px; border: none; align-items: center;
   color: white;
   width: 100%;
 }
@@ -84,7 +84,7 @@
   background: #f87e96;;
 }
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-  background-color:#ef233c;
+  background-color: #D60B52;
   border-radius: 30px;
 }
 .payment-footer{
@@ -94,7 +94,7 @@
 @media (max-width: 767px) {
   ::ng-deep .my-custom-dialog-class {
     .mdc-dialog {
-      border: 4px solid  #ef233c ;
+      border: 4px solid   #D60B52;
       //background-color: #0006;
       //border: none;
       //padding: 0;
