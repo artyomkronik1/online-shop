@@ -25,16 +25,16 @@
               <tr *ngFor="let c of cartData.data; let i = index">
                 <td class="d-flex align-items-center justify-content-around">
                     <img style="border-radius: 30px" [src]="c?.product?.image" alt="{{c?.product?.name}}" height="60" class="order-1" />
-                  <span class="text-danger"> <i class="fa fa-trash p-4" style="cursor: pointer" (click)="cartService.DeleteProductFromCart(i)"></i></span>
+                  <span class="text-danger"> <i class="fa fa-trash p-4" style="cursor: pointer; " (click)="cartService.DeleteProductFromCart(i)"></i></span>
                 </td>
                 <td>
-                  <p>
+                  <p style="display: flex; justify-content: center; align-items: center">
                     {{c?.product?.name}}
                   </p>
                 </td>
 
                 <td>
-                    <p style="font-family: cursive"> {{c?.product?.price | currency:'USD'}}</p>
+                    <p style="font-family: cursive;display: flex; justify-content: center; align-items: center "> {{c?.product?.price | currency:'USD'}}</p>
                 </td>
 
                 <td>
@@ -50,7 +50,7 @@
                 </td>
 
                 <td>
-                  <p style=" font-family: cursive;">
+                  <p style=" font-family: cursive; display: flex; justify-content: center; align-items: center ">
                     {{cartService.CalculateSubTotal(i) | currency:'USD'}}
                   </p>
                 </td>

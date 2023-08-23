@@ -35,12 +35,20 @@ export class CartComponent implements OnInit {
     else{
       this.switchLang('en')
     }
+    this.cartData =[]
+    this.cartTotal=0;
+    let cart =  JSON.parse(localStorage.getItem('cart') as any)
+    this.cartData  =cart?cart:[]
+    this.cartTotal = cart?.total
   }
   ngOnInit():void{
     this.dir=  JSON.parse(localStorage.getItem('lan') as any) == 'he' ? "rtl" : "ltr"
     //assign the values from localstorage
-    this.cartService.cartData$.subscribe((data:any)=>this.cartData = data);
-    this.cartService.cartTotal$.subscribe((total:any)=>this.cartTotal = total)
+    this.cartData =[]
+    this.cartTotal=0;
+    let cart =  JSON.parse(localStorage.getItem('cart') as any)
+    this.cartData = cart? cart:[]
+    this.cartTotal = cart?.total
   }
   ChangeQuantity(index:number, increase:boolean)
   {

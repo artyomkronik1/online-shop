@@ -16,12 +16,12 @@ export class WishComponent implements OnInit {
 
   }
   ngDoCheck(){
+    this.cartData=[];
     let cart =  JSON.parse(localStorage.getItem('cart') as any)
     if(cart)
     {
-      this.cartData = cart.wishList
-
-
+      this.ids = cart.wishList
+      this.getDATA()
     }
   }
   //get all products
@@ -41,10 +41,9 @@ export class WishComponent implements OnInit {
   getDATA(){
     this.allProducts.forEach((product: any) => {
       this.ids.forEach((wish:any)=>{
-        if(wish.id === product.id)
+        if(wish.id == product.id)
         {
           this.cartData.push(product)
-
         }
       })
     });

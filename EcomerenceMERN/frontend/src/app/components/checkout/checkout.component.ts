@@ -79,7 +79,6 @@ export class CheckoutComponent  {
   }
   onCheckout() {
     this.spinner.show().then(p => {
-      console.log(this.first_name)
       this.cartService.CheckoutFromCart(2);
     });
   }
