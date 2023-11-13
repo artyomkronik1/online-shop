@@ -2,8 +2,11 @@
   "dependencies": {
     "@angular/material": "^16.2.1",
     "@ng-bootstrap/ng-bootstrap": "^15.1.1",
-    "ngx-bootstrap": "^11.0.2",
-    "prebuild": "cd backend & npm run build",
+    "ngx-bootstrap": "^11.0.2"
+  },
+  "scripts": {
+    "prebuild": "cd backend & cd untitled & npm run build",
     "build": "cd frontend & npm run build"
   }
-}
+  }
+
